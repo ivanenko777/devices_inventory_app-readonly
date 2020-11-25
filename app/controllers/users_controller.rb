@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: [:show, :edit, :update]
 
   # GET /users
   def index
@@ -24,6 +24,19 @@ class UsersController < ApplicationController
       render :new
     end
   end
+
+  # GET /users/1/edit
+  def edit; end
+
+  # PATCH/PUT /users/1
+  def update
+    if @user.update(user_params)
+      redirect_to @user, notice: 'User was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def set_user
