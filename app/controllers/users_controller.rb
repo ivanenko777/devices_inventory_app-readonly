@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   def index
@@ -35,6 +35,12 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  # DELETE /users/1
+  def destroy
+    @user.destroy
+    redirect_to users_url, notice: 'User was successfully deleted.'
   end
 
   private
