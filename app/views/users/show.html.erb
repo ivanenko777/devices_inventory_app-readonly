@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User #<%= @user.id %></h1>
+<%= link_to 'Back', users_path %>
+| <%= link_to 'Edit', edit_user_path(@user) %>
+| <%= link_to 'Delete', @user, method: :delete, data: {confirm: 'Are you sure?'} %>
+
+<p>
+  <strong>Full name:</strong>
+  <%= @user.full_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Is active:</strong>
+  <%= @user.is_active %>
+</p>
