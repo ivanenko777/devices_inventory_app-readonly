@@ -19,7 +19,7 @@ class OfficesController < ApplicationController
     @office = Office.new(office_params)
 
     if @office.save
-      redirect_to @office, notice: 'Office wa successfully created'
+      redirect_to @office, notice: 'Office was successfully created.'
     else
       render :new
     end
@@ -31,7 +31,7 @@ class OfficesController < ApplicationController
   # PATCH/PUT /offices/1
   def update
     if @office.update(office_params)
-      redirect_to @office, notice: 'Office was successfully updates'
+      redirect_to @office, notice: 'Office was successfully updates.'
     else
       render :edit
     end
