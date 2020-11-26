@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Office #<%= @office.id %></h1>
+<%= link_to 'Back', offices_path %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @office.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @office.address %>
+</p>
+
+<p>
+  <strong>Is active:</strong>
+  <%= @office.is_active %>
+</p>
