@@ -1,5 +1,5 @@
 class OfficesController < ApplicationController
-  before_action :set_office, only: [:show, :edit, :update]
+  before_action :set_office, only: [:show, :edit, :update, :destroy]
 
   # GET /offices
   def index
@@ -35,6 +35,12 @@ class OfficesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  # DELETE /offices/1
+  def destroy
+    @office.destroy
+    redirect_to offices_url, notice: 'Office was successfully deleted.'
   end
 
   private
