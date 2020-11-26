@@ -15,6 +15,8 @@ class SessionsController < ApplicationController
       render :login
     elsif @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
+      @user.logged_in_at = DateTime.now
+      @user.save
       redirect_to root_url, notice: 'Logged in!'
     else
       flash.now[:alert] = 'Email or password is invalid'
