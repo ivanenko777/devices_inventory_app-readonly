@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rooms</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Office</th>
+    <th>Name</th>
+    <th>Is active</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @rooms.each do |room| %>
+    <tr>
+      <td><%= room.office.name %></td>
+      <td><%= room.name %></td>
+      <td><%= room.is_active %></td>
+      <td><%= link_to 'Info', room %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
