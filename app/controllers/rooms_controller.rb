@@ -1,6 +1,10 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show]
 
+  before_action only: [:new, :create] do
+    @offices_for_select = Office.all
+  end
+
   # GET /rooms
   def index
     @rooms = Room.all
@@ -9,9 +13,31 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   def show; end
 
+  # GET /rooms/new
+  def new
+    @room = Room.new
+  end
+
+  # POST /rooms
+  def create
+    @room = Room.new(rooms_params)
+
+    if @room.save && params[:commit] == 'Create Room and New'
+      redirect_to new_room_path, notice: 'Room was successfully created.'
+    elsif @room.save
+      redirect_to @room, notice: 'Room was successfully created.'
+    else
+      render :new
+    end
+  end
+
   private
 
   def set_room
     @room = Room.find(params[:id])
+  end
+
+  def rooms_params
+    params.require(:room).permit(:office_id, :name, :is_active)
   end
 end
