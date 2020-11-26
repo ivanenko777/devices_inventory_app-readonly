@@ -1,5 +1,5 @@
 class OfficesController < ApplicationController
-  before_action :set_office, only: [:show]
+  before_action :set_office, only: [:show, :edit, :update]
 
   # GET /offices
   def index
@@ -22,6 +22,18 @@ class OfficesController < ApplicationController
       redirect_to @office, notice: 'Office wa successfully created'
     else
       render :new
+    end
+  end
+
+  # GET /offices/1/edit
+  def edit; end
+
+  # PATCH/PUT /offices/1
+  def update
+    if @office.update(office_params)
+      redirect_to @office, notice: 'Office was successfully updates'
+    else
+      render :edit
     end
   end
 
