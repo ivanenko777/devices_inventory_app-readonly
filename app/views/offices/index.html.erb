@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Offices</h1>
+<%= link_to 'New Office', new_office_path %>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Is active</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @offices.each do |office| %>
+    <tr>
+      <td><%= office.name %></td>
+      <td><%= office.address %></td>
+      <td><%= office.is_active %></td>
+      <td><%= link_to 'Info', office %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

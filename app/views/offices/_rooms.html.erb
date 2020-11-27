@@ -1,0 +1,20 @@
+<strong>Rooms:</strong>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Is active</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @rooms.each do |room| %>
+    <tr>
+      <td><%= room.name %></td>
+      <td><%= room.is_active %></td>
+      <td><%= link_to 'Info', room %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
