@@ -3,6 +3,7 @@
 <h1>Room #<%= @room.id %></h1>
 <%= link_to 'Back', rooms_path %>
 | <%= link_to 'Edit', edit_room_path(@room) %>
+| <%= link_to 'Delete', @room, method: :delete, data: {confirm: 'Are you sure?'} %>
 
 <p>
   <strong>Office:</strong>

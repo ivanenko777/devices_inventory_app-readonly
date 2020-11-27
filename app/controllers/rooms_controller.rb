@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: [:show, :edit, :update]
+  before_action :set_room, only: [:show, :edit, :update, :destroy]
 
   before_action only: [:new, :create, :edit, :update] do
     @offices_for_select = Office.all
@@ -43,6 +43,12 @@ class RoomsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  # DELETE /rooms/1
+  def destroy
+    @room.destroy
+    redirect_to rooms_url, notice: 'Room was successfully deleted.'
   end
 
   private
