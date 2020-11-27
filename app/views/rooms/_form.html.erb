@@ -28,6 +28,6 @@
 
   <div class="actions">
     <%= form.submit %>
-    <%= form.submit('Create Room and New') %>
+    <%= form.submit('Create Room and New') if action_name == 'new' %>
   </div>
 <% end %>
