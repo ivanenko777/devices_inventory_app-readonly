@@ -16,6 +16,7 @@ class RoomsController < ApplicationController
   # GET /rooms/new
   def new
     @room = Room.new
+    @room.is_active = true if !@room.is_active.present?
   end
 
   # POST /rooms
