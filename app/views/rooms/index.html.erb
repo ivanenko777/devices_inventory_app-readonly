@@ -6,9 +6,10 @@
 <table>
   <thead>
   <tr>
-    <th>Office</th>
-    <th>Name</th>
-    <th>Is active</th>
+    <th>Office name</th>
+    <th>Office address</th>
+    <th>Room name</th>
+    <th>Is active room</th>
     <th></th>
   </tr>
   </thead>
@@ -17,6 +18,7 @@
   <% @rooms.each do |room| %>
     <tr>
       <td><%= room.office.name %></td>
+      <td><%= room.office.address %></td>
       <td><%= room.name %></td>
       <td><%= room.is_active %></td>
       <td><%= link_to 'Info', room %></td>
