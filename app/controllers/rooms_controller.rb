@@ -17,6 +17,7 @@ class RoomsController < ApplicationController
   def new
     @room = Room.new
     @room.is_active = true if !@room.is_active.present?
+    @room.office_id = params[:office] if params[:office].present?
   end
 
   # POST /rooms
@@ -24,7 +25,7 @@ class RoomsController < ApplicationController
     @room = Room.new(rooms_params)
 
     if @room.save && params[:commit] == 'Create Room and New'
-      redirect_to new_room_path, notice: 'Room was successfully created.'
+      redirect_to new_room_path(office: @room), notice: 'Room was successfully created.'
     elsif @room.save
       redirect_to @room, notice: 'Room was successfully created.'
     else
