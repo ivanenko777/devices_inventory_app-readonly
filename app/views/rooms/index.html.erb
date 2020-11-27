@@ -2,6 +2,33 @@
 
 <h1>Rooms</h1>
 <%= link_to 'New Room', new_room_path %>
+<br>
+
+<strong>Filter:</strong>
+<%= link_to 'Remove all filter', url_for(@filter_params.merge(filter_active: nil, filter_office: nil, filter_find: nil)) %>
+<br>
+
+<strong>By active:</strong>
+<%= link_to 'All', url_for(@filter_params.merge(filter_active: nil)) %>
+| <%= link_to 'Active', url_for(@filter_params.merge(filter_active: 1)) %>
+| <%= link_to 'Inactive', url_for(@filter_params.merge(filter_active: 0)) %>
+<br>
+
+<strong>By office:</strong>
+<%= link_to '[ X ]', url_for(@filter_params.merge(filter_office: nil)) %>
+<% @filter_offices.each do |office| %>
+  <% name = office.is_active ? office.name : '(inactive) ' + office.name %>
+  | <%= link_to name, url_for(@filter_params.merge(filter_office: office.id)) %>
+<% end %>
+<br>
+
+<%= form_tag url_for(rooms_path), method: :get do %>
+  <strong>By room:</strong>
+  <%= hidden_field_tag 'filter_active', params[:filter_active] %>
+  <%= hidden_field_tag 'filter_office', params[:filter_office] %>
+  <%= text_field_tag 'filter_room', params[:filter_room] %>
+  <%= submit_tag "Filter" %>
+<% end %>
 
 <table>
   <thead>

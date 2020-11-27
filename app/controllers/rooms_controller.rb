@@ -7,7 +7,15 @@ class RoomsController < ApplicationController
 
   # GET /rooms
   def index
-    @rooms = Room.all
+    # @rooms = Room.all
+    @filter_params = filter_params
+    @filter_offices = Office.all
+
+    @rooms = Room.where(nil)
+    
+    @rooms = @rooms.filter_by_is_active(params[:filter_active]) if params[:filter_active].present?
+    @rooms = @rooms.filter_by_office_id(params[:filter_office]) if params[:filter_office].present?
+    @rooms = @rooms.filter_by_room_name_contains(params[:filter_room]) if params[:filter_room].present?
   end
 
   # GET /rooms/1
@@ -59,5 +67,10 @@ class RoomsController < ApplicationController
 
   def rooms_params
     params.require(:room).permit(:office_id, :name, :is_active)
+  end
+
+  def filter_params
+    keys = :filter_active, :filter_office, :filter_room
+    params.permit(keys)
   end
 end
