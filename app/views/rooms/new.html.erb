@@ -3,36 +3,4 @@
 <h1>New room</h1>
 <%= link_to 'Back', rooms_path %>
 
-<%= form_with(model: @room, local: true) do |form| %>
-  <% if @room.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@room.errors.count, "error") %> prohibited this @room from being saved:</h2>
-
-      <ul>
-        <% @room.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :office_id %>
-    <%= form.collection_select :office_id, @offices_for_select, :id, :office_info_for_select, prompt: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :is_active %>
-    <%= form.check_box :is_active %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-    <%= form.submit('Create Room and New') %>
-  </div>
-<% end %>
+<%= render 'form', room: @room %>
