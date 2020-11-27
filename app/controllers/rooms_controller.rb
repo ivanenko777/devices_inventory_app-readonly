@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: [:show]
+  before_action :set_room, only: [:show, :edit, :update]
 
-  before_action only: [:new, :create] do
+  before_action only: [:new, :create, :edit, :update] do
     @offices_for_select = Office.all
   end
 
@@ -30,6 +30,18 @@ class RoomsController < ApplicationController
       redirect_to @room, notice: 'Room was successfully created.'
     else
       render :new
+    end
+  end
+
+  # GET /rooms/1/edit
+  def edit; end
+
+  # PATCH/PUT /rooms
+  def update
+    if @room.update(rooms_params)
+      redirect_to @room, notice: 'Room was successfully updated.'
+    else
+      render :edit
     end
   end
 
