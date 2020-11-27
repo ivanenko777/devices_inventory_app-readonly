@@ -11,7 +11,7 @@ class RoomsController < ApplicationController
     @filter_offices = Office.all
     @order_by = order_by_values
 
-    @rooms = Room.where(nil)
+    @rooms = Room.includes(:office).where(nil)
 
     # FILTER
     @rooms = @rooms.filter_by_is_active(params[:filter_active]) if params[:filter_active].present?
