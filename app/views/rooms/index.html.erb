@@ -5,7 +5,7 @@
 <br>
 
 <strong>Filter:</strong>
-<%= link_to 'Remove all filter', url_for(@filter_params.merge(filter_active: nil, filter_office: nil, filter_find: nil)) %>
+<%= link_to 'Remove all filter', url_for(@filter_params.merge(filter_active: nil, filter_office: nil, filter_find: nil, order_by: nil)) %>
 <br>
 
 <strong>By active:</strong>
@@ -24,11 +24,19 @@
 
 <%= form_tag url_for(rooms_path), method: :get do %>
   <strong>By room:</strong>
-  <%= hidden_field_tag 'filter_active', params[:filter_active] %>
-  <%= hidden_field_tag 'filter_office', params[:filter_office] %>
+  <%= hidden_field_tag 'filter_active', params[:filter_active] if params[:filter_active] %>
+  <%= hidden_field_tag 'filter_office', params[:filter_office] if params[:filter_office] %>
+  <%= hidden_field_tag 'order_by', params[:order_by] if params[:order_by] %>
   <%= text_field_tag 'filter_room', params[:filter_room] %>
   <%= submit_tag "Filter" %>
 <% end %>
+
+<strong>Order by:</strong>
+<%= link_to '[ default ]', url_for(@filter_params.merge(order_by: nil)) %>
+<% @order_by.each do |param, name| %>
+  | <%= link_to name, url_for(@filter_params.merge(order_by: param)) %>
+<% end %>
+<br>
 
 <table>
   <thead>
