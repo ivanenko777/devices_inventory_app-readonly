@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  resources :offices
+  resources :offices do
+    get 'rooms', on: :member
+  end
   resources :rooms
   resources :sessions, only: [:new, :create, :destroy]
   resources :users

@@ -2,6 +2,8 @@
 
 <h1>Office #<%= @office.id %></h1>
 <%= link_to 'Back', offices_path %>
+| <%= link_to 'Info', @office %>
+| <%= link_to 'Rooms', rooms_office_path(@office) %>
 | <%= link_to 'Edit', edit_office_path(@office) %>
 | <%= link_to 'Delete', @office, method: :delete, data: {confirm: 'Are you sure?'} %>
 
@@ -19,3 +21,5 @@
   <strong>Is active:</strong>
   <%= @office.is_active %>
 </p>
+
+<%= render 'rooms', rooms: @rooms if action_name == 'rooms' %>
