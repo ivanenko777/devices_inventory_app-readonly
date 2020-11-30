@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Device manufacturer #<%= @manufacturer.id %></h1>
+<h1>Device manufacturer #<%= @device_manufacturer.id %></h1>
 <%= link_to 'Back', device_manufacturers_path %>
-| <%= link_to 'Edit', edit_device_manufacturer_path(@manufacturer) %>
-| <%= link_to 'Delete', @manufacturer, method: :delete, data: {confirm: 'Are you sure?'} %>
+| <%= link_to 'Edit', edit_device_manufacturer_path(@device_manufacturer) %>
+| <%= link_to 'Delete', @device_manufacturer, method: :delete, data: {confirm: 'Are you sure?'} %>
 
 <p>
   <strong>Name:</strong>
-  <%= @manufacturer.name %>
+  <%= @device_manufacturer.name %>
 </p>

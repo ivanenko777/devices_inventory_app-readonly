@@ -13,10 +13,10 @@
   </thead>
 
   <tbody>
-  <% @manufacturers.each do |manufacturer| %>
+  <% @device_manufacturers.each do |device_manufacturer| %>
     <tr>
-      <td><%= manufacturer.name %></td>
-      <td><%= link_to 'Info', manufacturer %></td>
+      <td><%= device_manufacturer.name %></td>
+      <td><%= link_to 'Info', device_manufacturer %></td>
     </tr>
   <% end %>
   </tbody>

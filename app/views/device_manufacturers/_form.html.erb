@@ -1,10 +1,10 @@
-<%= form_with(model: manufacturer, local: true) do |form| %>
-  <% if manufacturer.errors.any? %>
+<%= form_with(model: device_manufacturer, local: true) do |form| %>
+  <% if device_manufacturer.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(manufacturer.errors.count, "error") %> prohibited this device manufacturer from being saved:</h2>
+      <h2><%= pluralize(device_manufacturer.errors.count, "error") %> prohibited this device manufacturer from being saved:</h2>
 
       <ul>
-        <% manufacturer.errors.full_messages.each do |message| %>
+        <% device_manufacturer.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>

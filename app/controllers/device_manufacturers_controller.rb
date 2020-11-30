@@ -1,10 +1,9 @@
 class DeviceManufacturersController < ApplicationController
-
-  before_action :set_manufacturer, only: [:show, :edit, :update, :destroy]
+  before_action :set_device_manufacturer, only: [:show, :edit, :update, :destroy]
 
   # GET /device_manufacturers
   def index
-    @manufacturers = DeviceManufacturer.all
+    @device_manufacturers = DeviceManufacturer.all
   end
 
   # GET /device_manufacturers/1
@@ -12,14 +11,14 @@ class DeviceManufacturersController < ApplicationController
 
   # GET /device_manufacturers/new
   def new
-    @manufacturer = DeviceManufacturer.new
+    @device_manufacturer = DeviceManufacturer.new
   end
 
   # POST /device_manufacturers
   def create
-    @manufacturer = DeviceManufacturer.new(device_manufacturer_params)
-    if @manufacturer.save
-      redirect_to @manufacturer, notice: 'Device manufacturer was successfully created.'
+    @device_manufacturer = DeviceManufacturer.new(device_manufacturer_params)
+    if @device_manufacturer.save
+      redirect_to @device_manufacturer, notice: 'Device manufacturer was successfully created.'
     else
       render :new
     end
@@ -30,8 +29,8 @@ class DeviceManufacturersController < ApplicationController
 
   # PATCH/PUT /device_manufacturers
   def update
-    if @manufacturer.update(device_manufacturer_params)
-      redirect_to @manufacturer, notice: 'Device manufacturer was successfully updated.'
+    if @device_manufacturer.update(device_manufacturer_params)
+      redirect_to @device_manufacturer, notice: 'Device manufacturer was successfully updated.'
     else
       render :edit
     end
@@ -39,14 +38,14 @@ class DeviceManufacturersController < ApplicationController
 
   # DELETE /device_manufacturer/1
   def destroy
-    @manufacturer.destroy
+    @device_manufacturer.destroy
     redirect_to device_manufacturers_url, notice: 'Device manufacturer was successfully deleted.'
   end
 
   private
 
-  def set_manufacturer
-    @manufacturer = DeviceManufacturer.find(params[:id])
+  def set_device_manufacturer
+    @device_manufacturer = DeviceManufacturer.find(params[:id])
   end
 
   def device_manufacturer_params
