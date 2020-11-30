@@ -1,5 +1,5 @@
 class DeviceTypesController < ApplicationController
-  before_action :set_device_model, only: [:show]
+  before_action :set_device_type, only: [:show]
 
   # GET /device_types
   def index
@@ -27,7 +27,7 @@ class DeviceTypesController < ApplicationController
 
   private
 
-  def set_device_model
+  def set_device_type
     @device_type = DeviceType.find(params[:id])
   end
 
