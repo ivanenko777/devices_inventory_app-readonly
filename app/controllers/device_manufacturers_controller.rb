@@ -1,6 +1,6 @@
 class DeviceManufacturersController < ApplicationController
 
-  before_action :set_manufacturer, only: [:show]
+  before_action :set_manufacturer, only: [:show, :edit, :update]
 
   # GET /device_manufacturers
   def index
@@ -22,6 +22,18 @@ class DeviceManufacturersController < ApplicationController
       redirect_to @manufacturer, notice: 'Device manufacturer was successfully created.'
     else
       render :new
+    end
+  end
+
+  # GET /device_manufacturers/1/edit
+  def edit; end
+
+  # PATCH/PUT /device_manufacturers
+  def update
+    if @manufacturer.update(device_manufacturer_params)
+      redirect_to @manufacturer, notice: 'Device manufacturer was successfully updated.'
+    else
+      render :edit
     end
   end
 
