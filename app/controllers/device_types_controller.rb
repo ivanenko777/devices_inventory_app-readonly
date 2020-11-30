@@ -14,8 +14,7 @@ class DeviceTypesController < ApplicationController
     @device_type = DeviceType.new
   end
 
-  # POST /device_type
-
+  # POST /device_types
   def create
     @device_type = DeviceType.new(device_type_params)
     if @device_type.save
