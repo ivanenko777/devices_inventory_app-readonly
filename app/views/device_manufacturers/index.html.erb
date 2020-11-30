@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Device manufacturers</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @manufacturers.each do |manufacturer| %>
+    <tr>
+      <td><%= manufacturer.name %></td>
+      <td><%= link_to 'Info', manufacturer %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
