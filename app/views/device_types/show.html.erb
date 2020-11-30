@@ -2,6 +2,8 @@
 
 <h1>Device type #<%= @device_type.id %></h1>
 <%= link_to 'Back', device_types_path %>
+| <%= link_to 'Edit', edit_device_type_path(@device_type) %>
+
 <p>
   <strong>Sys name:</strong>
   <%= @device_type.sys_name %>

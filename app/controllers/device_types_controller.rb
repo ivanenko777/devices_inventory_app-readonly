@@ -1,5 +1,5 @@
 class DeviceTypesController < ApplicationController
-  before_action :set_device_type, only: [:show]
+  before_action :set_device_type, only: [:show, :edit, :update]
 
   # GET /device_types
   def index
@@ -21,6 +21,18 @@ class DeviceTypesController < ApplicationController
       redirect_to @device_type, notice: 'Device manufacturer was successfully created.'
     else
       render :new
+    end
+  end
+
+  # GET /device_types/1/edit
+  def edit; end
+
+  # PATCH/PUT /device_types
+  def update
+    if @device_type.update(device_type_params)
+      redirect_to @device_type, notice: 'Device manufacturer was successfully updated.'
+    else
+      render :edit
     end
   end
 
