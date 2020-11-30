@@ -3,6 +3,7 @@
 <h1>Device manufacturer #<%= @manufacturer.id %></h1>
 <%= link_to 'Back', device_manufacturers_path %>
 | <%= link_to 'Edit', edit_device_manufacturer_path(@manufacturer) %>
+| <%= link_to 'Delete', @manufacturer, method: :delete, data: {confirm: 'Are you sure?'} %>
 
 <p>
   <strong>Name:</strong>

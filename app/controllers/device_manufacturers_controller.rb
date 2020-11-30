@@ -1,6 +1,6 @@
 class DeviceManufacturersController < ApplicationController
 
-  before_action :set_manufacturer, only: [:show, :edit, :update]
+  before_action :set_manufacturer, only: [:show, :edit, :update, :destroy]
 
   # GET /device_manufacturers
   def index
@@ -35,6 +35,12 @@ class DeviceManufacturersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  # DELETE /device_manufacturer/1
+  def destroy
+    @manufacturer.destroy
+    redirect_to device_manufacturers_url, notice: 'Device manufacturer was successfully deleted.'
   end
 
   private
