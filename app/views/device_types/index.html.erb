@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Device types</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Sys name</th>
+    <th>Name</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @device_types.each do |device_type| %>
+    <tr>
+      <td><%= device_type.sys_name %></td>
+      <td><%= device_type.name %></td>
+      <td></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
