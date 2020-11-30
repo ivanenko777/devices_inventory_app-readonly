@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
 
+  resources :device_manufacturers
   resources :offices do
     get 'rooms', on: :member
   end
