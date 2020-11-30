@@ -2,16 +2,20 @@ class DeviceManufacturersController < ApplicationController
 
   before_action :set_manufacturer, only: [:show]
 
+  # GET /device_manufacturers
   def index
     @manufacturers = DeviceManufacturer.all
   end
 
+  # GET /device_manufacturers/1
   def show; end
 
+  # GET /device_manufacturers/new
   def new
     @manufacturer = DeviceManufacturer.new
   end
 
+  # POST /device_manufacturers
   def create
     @manufacturer = DeviceManufacturer.new(device_manufacturer_params)
     if @manufacturer.save
