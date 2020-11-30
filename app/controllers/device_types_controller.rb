@@ -1,5 +1,5 @@
 class DeviceTypesController < ApplicationController
-  before_action :set_device_type, only: [:show, :edit, :update]
+  before_action :set_device_type, only: [:show, :edit, :update, :destroy]
 
   # GET /device_types
   def index
@@ -34,6 +34,12 @@ class DeviceTypesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  # DELETE /device_types/1
+  def destroy
+    @device_type.destroy
+    redirect_to device_types_path, notice: 'Device type was successfully deleted.'
   end
 
   private
