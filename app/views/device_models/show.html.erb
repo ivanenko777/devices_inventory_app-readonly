@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Device model #<%= @device_model.id %></h1>
+<%= link_to 'Back', device_models_path %>
+
+<p>
+  <strong>Type:</strong>
+  <%= @device_model.device_type.name %>
+</p>
+
+<p>
+  <strong>Manufacturer:</strong>
+  <%= @device_model.device_manufacturer.name %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @device_model.name %>
+</p>
+
+<p>
+  <strong>Is active:</strong>
+  <%= @device_model.is_active %>
+</p>
