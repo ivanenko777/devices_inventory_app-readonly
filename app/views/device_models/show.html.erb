@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Device model #<%= @device_model.id %></h1>
+<%= link_to 'Back', device_models_path %>
+| <%= link_to 'Edit', edit_device_model_path(@device_model) %>
+| <%= link_to 'Delete', @device_model, method: :delete, data: {confirm: 'Are you sure?'} %>
+
+<p>
+  <strong>Type:</strong>
+  <%= @device_model.device_type.name %>
+</p>
+
+<p>
+  <strong>Manufacturer:</strong>
+  <%= @device_model.device_manufacturer.name %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @device_model.name %>
+</p>
+
+<p>
+  <strong>Is active:</strong>
+  <%= @device_model.is_active %>
+</p>

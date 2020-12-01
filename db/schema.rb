@@ -10,12 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_184325) do
+ActiveRecord::Schema.define(version: 2020_12_01_102118) do
 
   create_table "device_manufacturers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "device_models", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.bigint "device_manufacturer_id"
+    t.bigint "device_type_id"
+    t.boolean "is_active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["device_manufacturer_id"], name: "index_device_models_on_device_manufacturer_id"
+    t.index ["device_type_id", "device_manufacturer_id", "name"], name: "index_device_models_unique_model", unique: true
+    t.index ["device_type_id"], name: "index_device_models_on_device_type_id"
   end
 
   create_table "device_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -54,5 +66,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_184325) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "device_models", "device_manufacturers"
+  add_foreign_key "device_models", "device_types"
   add_foreign_key "rooms", "offices"
 end

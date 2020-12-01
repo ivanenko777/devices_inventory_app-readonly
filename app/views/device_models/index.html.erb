@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Device models</h1>
+<%= link_to 'New Device model', new_device_model_path %>
+<br>
+
+<strong>Filter:</strong>
+<%= link_to 'Remove all filter', url_for(@filter_params.merge(filter_active: nil, filter_device_type: nil, filter_device_manufacturer: nil, filter_model: nil, order_by: nil)) %>
+<br>
+
+<strong>By active:</strong>
+<%= link_to 'All', url_for(@filter_params.merge(filter_active: nil)) %>
+| <%= link_to 'Active', url_for(@filter_params.merge(filter_active: 1)) %>
+| <%= link_to 'Inactive', url_for(@filter_params.merge(filter_active: 0)) %>
+<br>
+
+<strong>By device type:</strong>
+<%= link_to 'All', url_for(@filter_params.merge(filter_device_type: nil)) %>
+<% @filter_device_types.each do |device_type| %>
+  | <%= link_to device_type.name, url_for(@filter_params.merge(filter_device_type: device_type.id)) %>
+<% end %>
+<br>
+
+<strong>By device manufacturer:</strong>
+<%= link_to 'All', url_for(@filter_params.merge(filter_device_manufacturer: nil)) %>
+<% @filter_device_manufacturers.each do |device_manufacturer| %>
+  | <%= link_to device_manufacturer.name, url_for(@filter_params.merge(filter_device_manufacturer: device_manufacturer.id)) %>
+<% end %>
+<br>
+
+<%= form_tag url_for(device_models_path), method: :get do %>
+  <strong>By room:</strong>
+  <%= hidden_field_tag 'filter_active', params[:filter_active] if params[:filter_active] %>
+  <%= hidden_field_tag 'filter_device_type', params[:filter_device_type] if params[:filter_device_type] %>
+  <%= hidden_field_tag 'filter_device_manufacturer', params[:filter_device_manufacturer] if params[:filter_device_manufacturer] %>
+  <%= hidden_field_tag 'order_by', params[:order_by] if params[:order_by] %>
+  <%= text_field_tag 'filter_model', params[:filter_model] %>
+  <%= submit_tag "Filter" %>
+<% end %>
+
+<strong>Order by:</strong>
+<%= link_to '[ Default ]', url_for(@filter_params.merge(order_by: nil)) %>
+<% @order_by.each do |param, name| %>
+  | <%= link_to name, url_for(@filter_params.merge(order_by: param)) %>
+<% end %>
+
+<br>
+
+<table>
+  <thead>
+  <tr>
+    <th>Type</th>
+    <th>Manufacturer</th>
+    <th>Model</th>
+    <th>Is active</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @device_models.each do |device_model| %>
+    <tr>
+      <td><%= device_model.device_type.name %></td>
+      <td><%= device_model.device_manufacturer.name %></td>
+      <td><%= device_model.name %></td>
+      <td><%= device_model.is_active %></td>
+      <td><%= link_to 'Info', device_model %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
