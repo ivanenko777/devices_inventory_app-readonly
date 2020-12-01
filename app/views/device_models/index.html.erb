@@ -5,7 +5,7 @@
 <br>
 
 <strong>Filter:</strong>
-<%= link_to 'Remove all filter', url_for(@filter_params.merge(filter_active: nil)) %>
+<%= link_to 'Remove all filter', url_for(@filter_params.merge(filter_active: nil, filter_device_type: nil)) %>
 <br>
 
 <strong>By active:</strong>
@@ -13,6 +13,12 @@
 | <%= link_to 'Active', url_for(@filter_params.merge(filter_active: 1)) %>
 | <%= link_to 'Inactive', url_for(@filter_params.merge(filter_active: 0)) %>
 <br>
+
+<strong>By device type:</strong>
+<%= link_to 'All', url_for(@filter_params.merge(filter_device_type: nil)) %>
+<% @filter_device_types.each do |device_type| %>
+  | <%= link_to device_type.name, url_for(@filter_params.merge(filter_device_type: device_type.id)) %>
+<% end %>
 
 <table>
   <thead>
