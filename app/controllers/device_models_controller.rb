@@ -11,6 +11,7 @@ class DeviceModelsController < ApplicationController
     @filter_params = filter_params
     @filter_device_types = DeviceType.all
     @filter_device_manufacturers = DeviceManufacturer.all
+    @order_by = order_by_values
 
     @device_models = DeviceModel.includes(:device_type, :device_manufacturer).where(nil)
 
@@ -19,6 +20,24 @@ class DeviceModelsController < ApplicationController
     @device_models = @device_models.filter_by_device_type_id(params[:filter_device_type]) if params[:filter_device_type].present?
     @device_models = @device_models.filter_by_device_manufacturer_id(params[:filter_device_manufacturer]) if params[:filter_device_manufacturer].present?
     @device_models = @device_models.filter_by_device_model_name_contains(params[:filter_model]) if params[:filter_model].present?
+
+    # ORDER
+    @device_models = case params[:order_by]
+                     when 'model_name_asc'
+                       @device_models.order_by_device_model_name_asc
+                     when 'model_name_desc'
+                       @device_models.order_by_device_model_name_desc
+                     when 'type_name_asc'
+                       @device_models.order_by_device_type_name_asc
+                     when 'type_name_desc'
+                       @device_models.order_by_device_type_name_desc
+                     when 'manufacturer_name_asc'
+                       @device_models.order_by_device_manufacturer_name_asc
+                     when 'manufacturer_name_desc'
+                       @device_models.order_by_device_manufacturer_name_desc
+                     else
+                       @device_models.order_by_default
+                     end
   end
 
   # GET /device_models/1
@@ -70,7 +89,13 @@ class DeviceModelsController < ApplicationController
   end
 
   def filter_params
-    keys = :filter_active, :filter_device_type, :filter_device_manufacturer, :filter_model
+    keys = :filter_active, :filter_device_type, :filter_device_manufacturer, :filter_model, :order_by
     params.permit(keys)
+  end
+
+  def order_by_values
+    { model_name_asc: 'Model ACS', model_name_desc: 'Model DESC',
+     type_name_asc: 'Type ACS', type_name_desc: 'Type DESC',
+     manufacturer_name_asc: 'Manufacturer ACS', manufacturer_name_desc: 'Manufacturer DESC' }
   end
 end
