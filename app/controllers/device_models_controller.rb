@@ -10,12 +10,14 @@ class DeviceModelsController < ApplicationController
   def index
     @filter_params = filter_params
     @filter_device_types = DeviceType.all
+    @filter_device_manufacturers = DeviceManufacturer.all
 
     @device_models = DeviceModel.includes(:device_type, :device_manufacturer).where(nil)
 
     # FILTER
     @device_models = @device_models.filter_by_is_active(params[:filter_active]) if params[:filter_active].present?
     @device_models = @device_models.filter_by_device_type_id(params[:filter_device_type]) if params[:filter_device_type].present?
+    @device_models = @device_models.filter_by_device_manufacturer_id(params[:filter_device_manufacturer]) if params[:filter_device_manufacturer].present?
   end
 
   # GET /device_models/1
@@ -67,7 +69,7 @@ class DeviceModelsController < ApplicationController
   end
 
   def filter_params
-    keys = :filter_active, :filter_device_type
+    keys = :filter_active, :filter_device_type, :filter_device_manufacturer
     params.permit(keys)
   end
 end
