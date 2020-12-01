@@ -2,6 +2,17 @@
 
 <h1>Device models</h1>
 <%= link_to 'New Device model', new_device_model_path %>
+<br>
+
+<strong>Filter:</strong>
+<%= link_to 'Remove all filter', url_for(@filter_params.merge(filter_active: nil)) %>
+<br>
+
+<strong>By active:</strong>
+<%= link_to 'All', url_for(@filter_params.merge(filter_active: nil)) %>
+| <%= link_to 'Active', url_for(@filter_params.merge(filter_active: 1)) %>
+| <%= link_to 'Inactive', url_for(@filter_params.merge(filter_active: 0)) %>
+<br>
 
 <table>
   <thead>
