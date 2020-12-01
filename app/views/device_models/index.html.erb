@@ -5,7 +5,7 @@
 <br>
 
 <strong>Filter:</strong>
-<%= link_to 'Remove all filter', url_for(@filter_params.merge(filter_active: nil, filter_device_type: nil, filter_device_manufacturer: nil)) %>
+<%= link_to 'Remove all filter', url_for(@filter_params.merge(filter_active: nil, filter_device_type: nil, filter_device_manufacturer: nil, filter_model: nil)) %>
 <br>
 
 <strong>By active:</strong>
@@ -25,6 +25,16 @@
 <%= link_to 'All', url_for(@filter_params.merge(filter_device_manufacturer: nil)) %>
 <% @filter_device_manufacturers.each do |device_manufacturer| %>
   | <%= link_to device_manufacturer.name, url_for(@filter_params.merge(filter_device_manufacturer: device_manufacturer.id)) %>
+<% end %>
+<br>
+
+<%= form_tag url_for(device_models_path), method: :get do %>
+  <strong>By room:</strong>
+  <%= hidden_field_tag 'filter_active', params[:filter_active] if params[:filter_active] %>
+  <%= hidden_field_tag 'filter_device_type', params[:filter_device_type] if params[:filter_device_type] %>
+  <%= hidden_field_tag 'filter_device_manufacturer', params[:filter_device_manufacturer] if params[:filter_device_manufacturer] %>
+  <%= text_field_tag 'filter_model', params[:filter_model] %>
+  <%= submit_tag "Filter" %>
 <% end %>
 
 <table>
