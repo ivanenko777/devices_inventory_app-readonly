@@ -1,5 +1,5 @@
 class DeviceModelsController < ApplicationController
-  before_action :set_device_model, only: [:show, :edit, :update]
+  before_action :set_device_model, only: [:show, :edit, :update, :destroy]
 
   before_action only: [:new, :create, :edit, :update] do
     @device_types_for_select = DeviceType.all
@@ -41,6 +41,12 @@ class DeviceModelsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  # DELETE /device_models/1
+  def destroy
+    @device_model.destroy
+    redirect_to device_models_url, notice: 'Device model was successfully deleted.'
   end
 
   private
