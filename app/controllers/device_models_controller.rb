@@ -1,7 +1,7 @@
 class DeviceModelsController < ApplicationController
-  before_action :set_device_model, only: [:show]
+  before_action :set_device_model, only: [:show, :edit, :update]
 
-  before_action only: [:new, :create] do
+  before_action only: [:new, :create, :edit, :update] do
     @device_types_for_select = DeviceType.all
     @device_manufacturers_for_select = DeviceManufacturer.all
   end
@@ -28,6 +28,18 @@ class DeviceModelsController < ApplicationController
       redirect_to @device_model, notice: 'Device model was successfully created.'
     else
       render :new
+    end
+  end
+
+  # GET /device_models/1/edit
+  def edit; end
+
+  # PATCH/PUT /device_models
+  def update
+    if @device_model.update(device_model_params)
+      redirect_to @device_model, notice: 'Device model was successfully updated.'
+    else
+      render :edit
     end
   end
 
