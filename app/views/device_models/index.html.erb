@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Device models</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Type</th>
+    <th>Manufacturer</th>
+    <th>Model</th>
+    <th>Is active</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @device_models.each do |device_model| %>
+    <tr>
+      <td><%= device_model.device_type.name %></td>
+      <td><%= device_model.device_manufacturer.name %></td>
+      <td><%= device_model.name %></td>
+      <td><%= device_model.is_active %></td>
+      <td><%= link_to 'Info', device_model %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
