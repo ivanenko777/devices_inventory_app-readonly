@@ -17,12 +17,16 @@ class DevicesController < ApplicationController
 
   def new
     @device = Device.new
+    @device.device_model_id = params[:device_model] if params[:device_model].present?
+    @device.room_id = params[:room] if params[:room].present?
   end
 
   def create
     @device = Device.new(device_params)
 
-    if @device.save
+    if @device.save && params[:commit] == 'Create and New'
+      redirect_to new_device_path(device_model: @device.device_model_id, room: @device.room_id), notice: 'Device was successfully created.'
+    elsif @device.save
       redirect_to @device, notice: 'Device was successfully created.'
     else
       render :new
