@@ -1,5 +1,5 @@
 class DevicesController < ApplicationController
-  before_action :set_device, only: [:show, :edit, :update]
+  before_action :set_device, only: [:show, :edit, :update, :destroy]
 
   before_action only: [:new, :create, :edit, :update] do
     # TODO: active rooms
@@ -45,6 +45,13 @@ class DevicesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  # DELETE /device/1
+  def destroy
+    # TODO: salyga pries destroy, pvz status ir t.t.
+    @device.destroy
+    redirect_to devices_url, notice: 'Room was successfully deleted.'
   end
 
   private

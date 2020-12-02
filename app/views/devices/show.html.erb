@@ -3,6 +3,7 @@
 <h1>Device #<%= @device.id %></h1>
 <%= link_to 'Back', devices_path %>
 | <%= link_to 'Edit', edit_device_path(@device) %>
+| <%= link_to 'Delete', @device, method: :delete, data: {confirm: 'Are you sure?'} %>
 
 <p>
   <strong>Type:</strong>
