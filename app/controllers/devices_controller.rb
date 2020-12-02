@@ -1,7 +1,7 @@
 class DevicesController < ApplicationController
-  before_action :set_device, only: [:show]
+  before_action :set_device, only: [:show, :edit, :update]
 
-  before_action only: [:new, :create] do
+  before_action only: [:new, :create, :edit, :update] do
     # TODO: active rooms
     @device_models_for_select = DeviceModel.includes(:device_type, :device_manufacturer).order_by_default
     @rooms_for_select = Room.includes(:office).all
@@ -32,6 +32,18 @@ class DevicesController < ApplicationController
       redirect_to @device, notice: 'Device was successfully created.'
     else
       render :new
+    end
+  end
+
+  # GET /devices/1/edit
+  def edit; end
+
+  # PATCH/PUT /devices
+  def update
+    if @device.update(device_params)
+      redirect_to @device, notice: 'Device was successfully updated.'
+    else
+      render :edit
     end
   end
 
