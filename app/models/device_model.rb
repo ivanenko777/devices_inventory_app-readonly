@@ -14,7 +14,7 @@ class DeviceModel < ApplicationRecord
   scope :order_by_device_manufacturer_name_asc, -> { joins(:device_manufacturer).order('device_manufacturers.name ASC') }
   scope :order_by_device_manufacturer_name_desc, -> { joins(:device_manufacturer).order('device_manufacturers.name DESC') }
 
-  validates :name, presence: true, uniqueness: {scope: [:device_manufacturer_id, :device_type_id]}
   validates :device_manufacturer_id, presence: true
   validates :device_type_id, presence: true
+  validates :name, presence: true, uniqueness: {scope: [:device_manufacturer_id, :device_type_id]}
 end
