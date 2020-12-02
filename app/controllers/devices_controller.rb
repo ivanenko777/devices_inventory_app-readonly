@@ -15,12 +15,14 @@ class DevicesController < ApplicationController
   # GET /devices/1
   def show; end
 
+  # GET /devices/new
   def new
     @device = Device.new
     @device.device_model_id = params[:device_model] if params[:device_model].present?
     @device.room_id = params[:room] if params[:room].present?
   end
 
+  # POST /devices
   def create
     @device = Device.new(device_params)
 
