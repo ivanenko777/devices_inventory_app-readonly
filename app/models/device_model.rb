@@ -18,4 +18,8 @@ class DeviceModel < ApplicationRecord
   validates :device_manufacturer_id, presence: true
   validates :device_type_id, presence: true
   validates :name, presence: true, uniqueness: {scope: [:device_manufacturer_id, :device_type_id]}
+
+  def device_model_info_for_select
+    "#{device_type.name}: #{device_manufacturer.name} #{name}"
+  end
 end

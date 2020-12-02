@@ -15,4 +15,8 @@ class Room < ApplicationRecord
 
   validates :name, presence: true
   validates :office_id, presence: true
+
+  def room_info_for_select
+    "#{office.address} - #{name}"
+  end
 end
