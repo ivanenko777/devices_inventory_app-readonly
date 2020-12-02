@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Devices</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Type</th>
+    <th>Model</th>
+    <th>Serial no</th>
+    <th>Asset no</th>
+    <th>Room</th>
+    <th>Address</th>
+    <th>Office</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @devices.each do |device| %>
+    <tr>
+      <td><%= device.device_model.device_type.name %></td>
+      <td><%= "#{device.device_model.device_manufacturer.name} #{device.device_model.name}" %></td>
+      <td><%= device.serial_no %></td>
+      <td><%= device.asset_no %></td>
+      <td><%= device.room.name %></td>
+      <td><%= device.room.office.address %></td>
+      <td><%= device.room.office.name %></td>
+      <td></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
