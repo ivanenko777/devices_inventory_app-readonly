@@ -1,6 +1,7 @@
 class DeviceModel < ApplicationRecord
   belongs_to :device_manufacturer
   belongs_to :device_type
+  has_many :devices
 
   scope :filter_by_is_active, ->(active) { where is_active: active }
   scope :filter_by_device_type_id, ->(device_type_id) { where device_type_id: device_type_id }

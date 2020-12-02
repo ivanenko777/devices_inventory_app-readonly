@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_102118) do
+ActiveRecord::Schema.define(version: 2020_12_02_104906) do
 
   create_table "device_manufacturers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -36,6 +36,18 @@ ActiveRecord::Schema.define(version: 2020_12_01_102118) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sys_name"], name: "index_device_types_on_sys_name", unique: true
+  end
+
+  create_table "devices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "device_model_id"
+    t.bigint "room_id"
+    t.string "asset_no"
+    t.string "serial_no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["device_model_id", "serial_no"], name: "index_devices_on_device_model_id_and_serial_no", unique: true
+    t.index ["device_model_id"], name: "index_devices_on_device_model_id"
+    t.index ["room_id"], name: "index_devices_on_room_id"
   end
 
   create_table "offices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -68,5 +80,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_102118) do
 
   add_foreign_key "device_models", "device_manufacturers"
   add_foreign_key "device_models", "device_types"
+  add_foreign_key "devices", "device_models"
+  add_foreign_key "devices", "rooms"
   add_foreign_key "rooms", "offices"
 end

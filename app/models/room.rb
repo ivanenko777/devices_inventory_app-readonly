@@ -1,5 +1,6 @@
 class Room < ApplicationRecord
   belongs_to :office
+  has_many :devices
 
   scope :filter_by_is_active, ->(active) { where is_active: active }
   scope :filter_by_office_id, ->(office_id) { where office_id: office_id }
