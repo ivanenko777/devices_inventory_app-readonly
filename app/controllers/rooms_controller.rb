@@ -51,7 +51,7 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(rooms_params)
 
-    if @room.save && params[:commit] == 'Create Room and New'
+    if @room.save && params[:commit] == 'Create and New'
       redirect_to new_room_path(office: @room), notice: 'Room was successfully created.'
     elsif @room.save
       redirect_to @room, notice: 'Room was successfully created.'
