@@ -9,7 +9,7 @@ class DevicesController < ApplicationController
 
   # GET /devices
   def index
-    @devices = Device.includes(:device_model, room: :office).all
+    @devices = Device.includes(device_model: [:device_type, :device_manufacturer], room: :office).all
   end
 
   # GET /devices/1
