@@ -4,7 +4,11 @@ class DevicesController < ApplicationController
   before_action only: [:new, :create, :edit, :update] do
     # TODO: active rooms
     @device_models_for_select = DeviceModel.includes(:device_type, :device_manufacturer).order_by_default
-    @rooms_for_select = Room.includes(:office).all
+    @rooms_for_select = Room.includes(:office).active
+  end
+
+  before_action only: [:edit, :update] do
+    @rooms_for_select |= Room.where(id: @device.room)
   end
 
   # GET /devices
