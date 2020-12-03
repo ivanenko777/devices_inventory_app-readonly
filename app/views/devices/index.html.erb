@@ -13,6 +13,7 @@
     <th>Room</th>
     <th>Address</th>
     <th>Office</th>
+    <th>Status</th>
     <th></th>
   </tr>
   </thead>
@@ -27,6 +28,7 @@
       <td><%= device.room.name %></td>
       <td><%= device.room.office.address %></td>
       <td><%= device.room.office.name %></td>
+      <td><%= device.status.to_s.humanize %></td>
       <td><%= link_to 'Info', device %></td>
     </tr>
   <% end %>

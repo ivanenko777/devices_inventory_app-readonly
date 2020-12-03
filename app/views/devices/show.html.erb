@@ -6,6 +6,11 @@
 | <%= link_to 'Delete', @device, method: :delete, data: {confirm: 'Are you sure?'} %>
 
 <p>
+  <strong>Status:</strong>
+  <%= @device.status.to_s.humanize %>
+</p>
+
+<p>
   <strong>Type:</strong>
   <%= @device.device_model.device_type.name %>
 </p>

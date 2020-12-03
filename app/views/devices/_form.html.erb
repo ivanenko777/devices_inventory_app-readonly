@@ -12,6 +12,13 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :status %>
+    <%= form.collection_radio_buttons :status, Device.statuses, :first, :first do |r| %>
+      <%= r.label { r.radio_button + " " + r.text.to_s.humanize } %><br>
+    <% end %>
+  </div>
+
+  <div class="field">
     <%= form.label :device_model_id %>
     <%= form.collection_select :device_model_id, @device_models_for_select, :id, :device_model_info_for_select, prompt: true %>
   </div>

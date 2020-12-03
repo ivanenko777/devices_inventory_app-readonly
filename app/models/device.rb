@@ -1,4 +1,9 @@
 class Device < ApplicationRecord
+  enum status: {
+      in_operation: 1,
+      decommissioned: 2
+  }
+
   belongs_to :device_model
   belongs_to :room
 
