@@ -2,18 +2,24 @@ class DevicesController < ApplicationController
   before_action :set_device, only: [:show, :edit, :update, :destroy]
 
   before_action only: [:new, :create, :edit, :update] do
-    # TODO: active rooms
     @device_models_for_select = DeviceModel.includes(:device_type, :device_manufacturer).order_by_default
     @rooms_for_select = Room.includes(:office).active
   end
 
   before_action only: [:edit, :update] do
+    # active + current room (in inactive)
     @rooms_for_select |= Room.where(id: @device.room)
   end
 
   # GET /devices
   def index
-    @devices = Device.includes(device_model: [:device_type, :device_manufacturer], room: :office).all
+    @filter_params = filter_params
+    @filter_statuses = Device.statuses
+
+    @devices = Device.includes(device_model: [:device_type, :device_manufacturer], room: :office).where(nil)
+
+    # FILTER
+    @devices = @devices.filter_by_status(params[:filter_status]) if params[:filter_status].present?
   end
 
   # GET /devices/1
@@ -66,5 +72,10 @@ class DevicesController < ApplicationController
 
   def device_params
     params.require(:device).permit(:device_model_id, :room_id, :serial_no, :asset_no, :status)
+  end
+
+  def filter_params
+    keys = :filter_status
+    params.permit(keys)
   end
 end

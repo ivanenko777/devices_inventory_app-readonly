@@ -2,6 +2,18 @@
 
 <h1>Devices</h1>
 <%= link_to 'New Device', new_device_path %>
+<br>
+
+<strong>Filter:</strong>
+<%= link_to 'Remove all filters', url_for(@filter_params.merge(filter_status: nil)) %>
+<br>
+
+<strong>By status:</strong>
+<%= link_to 'All', url_for(@filter_params.merge(filter_status: nil)) %>
+<% @filter_statuses.each do |key, value| %>
+  | <%= link_to key.to_s.humanize, url_for(@filter_params.merge(filter_status: value)) %>
+<% end %>
+<br>
 
 <table>
   <thead>
