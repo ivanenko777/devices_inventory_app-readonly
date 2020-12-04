@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
 
   def current_user
-    session[:user_id] ? User.find_by(id: session[:user_id]) : nil
+    User.curr_user = session[:user_id] ? User.find_by(id: session[:user_id]) : nil
+    User.curr_user
   end
 
   def logged_in?

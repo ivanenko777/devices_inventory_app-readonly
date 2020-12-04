@@ -1,4 +1,6 @@
 class Device < ApplicationRecord
+  include UserTrackable
+
   enum status: {
       in_operation: 1,
       decommissioned: 2

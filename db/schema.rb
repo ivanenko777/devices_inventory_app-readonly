@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_03_140324) do
+ActiveRecord::Schema.define(version: 2020_12_04_140543) do
 
   create_table "device_manufacturers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -46,10 +46,14 @@ ActiveRecord::Schema.define(version: 2020_12_03_140324) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status"
+    t.integer "created_by_id"
+    t.integer "updated_by_id"
+    t.index ["created_by_id"], name: "index_devices_on_created_by_id"
     t.index ["device_model_id", "serial_no"], name: "index_devices_on_device_model_id_and_serial_no", unique: true
     t.index ["device_model_id"], name: "index_devices_on_device_model_id"
     t.index ["room_id"], name: "index_devices_on_room_id"
     t.index ["status"], name: "index_devices_on_status"
+    t.index ["updated_by_id"], name: "index_devices_on_updated_by_id"
   end
 
   create_table "offices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
