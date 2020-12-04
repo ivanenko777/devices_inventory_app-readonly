@@ -14,6 +14,7 @@ class Device < ApplicationRecord
   scope :filter_by_device_manufacturer, lambda { |device_manufacturer_id|
     joins(device_model: :device_manufacturer).where('device_models.device_manufacturer_id = ?', device_manufacturer_id)
   }
+  scope :filter_by_device_model, ->(device_model_id) { where(device_model_id: device_model_id) }
 
   validates :device_model_id, presence: true
   validates :room_id, presence: true

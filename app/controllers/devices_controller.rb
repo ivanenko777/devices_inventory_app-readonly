@@ -17,6 +17,7 @@ class DevicesController < ApplicationController
     @filter_statuses = Device.statuses
     @filter_device_types = DeviceType.all
     @filter_device_manufacturers = DeviceManufacturer.all
+    @filter_device_models = DeviceModel.includes(:device_manufacturer).all
 
     @devices = Device.includes(device_model: [:device_type, :device_manufacturer], room: :office).where(nil)
 
@@ -24,6 +25,7 @@ class DevicesController < ApplicationController
     @devices = @devices.filter_by_status(params[:filter_status]) if params[:filter_status].present?
     @devices = @devices.filter_by_device_type(params[:filter_device_type]) if params[:filter_device_type].present?
     @devices = @devices.filter_by_device_manufacturer(params[:filter_device_manufacturer]) if params[:filter_device_manufacturer].present?
+    @devices = @devices.filter_by_device_model(params[:filter_device_model]) if params[:filter_device_model].present?
   end
 
   # GET /devices/1
@@ -79,7 +81,7 @@ class DevicesController < ApplicationController
   end
 
   def filter_params
-    keys = :filter_status, :filter_device_type, :filter_device_manufacturer
+    keys = :filter_status, :filter_device_type, :filter_device_manufacturer, :filter_device_model
     params.permit(keys)
   end
 end
