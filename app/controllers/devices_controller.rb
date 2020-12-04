@@ -15,11 +15,13 @@ class DevicesController < ApplicationController
   def index
     @filter_params = filter_params
     @filter_statuses = Device.statuses
+    @filter_device_types = DeviceType.all
 
     @devices = Device.includes(device_model: [:device_type, :device_manufacturer], room: :office).where(nil)
 
     # FILTER
     @devices = @devices.filter_by_status(params[:filter_status]) if params[:filter_status].present?
+    @devices = @devices.filter_by_device_type(params[:filter_device_type]) if params[:filter_device_type].present?
   end
 
   # GET /devices/1
@@ -75,7 +77,7 @@ class DevicesController < ApplicationController
   end
 
   def filter_params
-    keys = :filter_status
+    keys = :filter_status, :filter_device_type
     params.permit(keys)
   end
 end

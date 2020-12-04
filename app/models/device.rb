@@ -10,6 +10,7 @@ class Device < ApplicationRecord
   belongs_to :room
 
   scope :filter_by_status, ->(status_id) { where status: status_id }
+  scope :filter_by_device_type, ->(device_type_id) { joins(device_model: :device_type).where("device_models.device_type_id = ?", device_type_id) }
 
   validates :device_model_id, presence: true
   validates :room_id, presence: true
