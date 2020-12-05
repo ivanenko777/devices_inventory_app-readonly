@@ -19,6 +19,7 @@ class DevicesController < ApplicationController
     @filter_device_manufacturers = DeviceManufacturer.all
     @filter_device_models = DeviceModel.includes(:device_manufacturer).all
     @filter_offices = Office.all
+    @order_by = order_by_values
 
     @devices = Device.includes(device_model: [:device_type, :device_manufacturer], room: :office).where(nil)
 
@@ -29,6 +30,16 @@ class DevicesController < ApplicationController
     @devices = @devices.filter_by_device_model(params[:filter_device_model]) if params[:filter_device_model].present?
     @devices = @devices.filter_by_office(params[:filter_office]) if params[:filter_office].present?
     @devices = @devices.filter_by_serial_no_or_asset_no_contains(params[:filter_text]) if params[:filter_text].present?
+
+    # ORDER
+    @devices = case params[:order_by]
+               when 'status_asc'
+                 @devices.order_by_status_asc
+               when 'status_desc'
+                 @devices.order_by_status_desc
+               else
+                 @devices.order_by_default
+               end
   end
 
   # GET /devices/1
@@ -84,7 +95,11 @@ class DevicesController < ApplicationController
   end
 
   def filter_params
-    keys = :filter_status, :filter_device_type, :filter_device_manufacturer, :filter_device_model, :filter_office, :filter_text
+    keys = :filter_status, :filter_device_type, :filter_device_manufacturer, :filter_device_model, :filter_office, :filter_text, :order_by
     params.permit(keys)
+  end
+
+  def order_by_values
+    { status_asc: 'Status ASC', status_desc: 'Status DESC' }
   end
 end

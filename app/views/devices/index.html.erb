@@ -5,7 +5,7 @@
 <br>
 
 <strong>Filter:</strong>
-<%= link_to 'Remove all filters', url_for(@filter_params.merge(filter_status: nil, filter_device_type: nil, filter_device_manufacturer: nil, filter_device_model: nil, filter_office: nil, filter_text: nil)) %>
+<%= link_to 'Remove all filters', url_for(@filter_params.merge(filter_status: nil, filter_device_type: nil, filter_device_manufacturer: nil, filter_device_model: nil, filter_office: nil, filter_text: nil, order_by: nil)) %>
 <br>
 
 <strong>By status:</strong>
@@ -51,9 +51,17 @@
   <%= hidden_field_tag 'filter_device_manufacturer', params[:filter_device_manufacturer] if params[:filter_device_manufacturer] %>
   <%= hidden_field_tag 'filter_device_model', params[:filter_device_model] if params[:filter_device_model] %>
   <%= hidden_field_tag 'filter_office', params[:filter_office] if params[:filter_office] %>
+  <%= hidden_field_tag 'order_by', params[:order_by] if params[:order_by] %>
   <%= text_field_tag 'filter_text', params[:filter_text] %>
   <%= submit_tag "Filter" %>
 <% end %>
+
+<strong>Order by:</strong>
+<%= link_to '[ Default ]', url_for(@filter_params.merge(order_by: nil)) %>
+<% @order_by.each do |param, name| %>
+  | <%= link_to name, url_for(@filter_params.merge(order_by: param)) %>
+<% end %>
+<br>
 
 <table>
   <thead>
