@@ -5,7 +5,7 @@
 <br>
 
 <strong>Filter:</strong>
-<%= link_to 'Remove all filters', url_for(@filter_params.merge(filter_status: nil, filter_device_type: nil, filter_device_manufacturer: nil, filter_device_model: nil)) %>
+<%= link_to 'Remove all filters', url_for(@filter_params.merge(filter_status: nil, filter_device_type: nil, filter_device_manufacturer: nil, filter_device_model: nil, filter_office: nil)) %>
 <br>
 
 <strong>By status:</strong>
@@ -33,6 +33,14 @@
 <%= link_to 'All', url_for(@filter_params.merge(filter_device_model: nil)) %>
 <% @filter_device_models.each do |device_model| %>
   | <%= link_to "#{device_model.device_manufacturer.name} #{device_model.name}", url_for(@filter_params.merge(filter_device_model: device_model.id)) %>
+<% end %>
+<br>
+
+<strong>By office:</strong>
+<%= link_to '[ X ]', url_for(@filter_params.merge(filter_office: nil)) %>
+<% @filter_offices.each do |office| %>
+  <% name = office.is_active ? office.name : '(inactive) ' + office.name %>
+  | <%= link_to name, url_for(@filter_params.merge(filter_office: office.id)) %>
 <% end %>
 <br>
 
