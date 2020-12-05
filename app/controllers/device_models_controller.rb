@@ -94,8 +94,8 @@ class DeviceModelsController < ApplicationController
   end
 
   def order_by_values
-    { model_name_asc: 'Model ACS', model_name_desc: 'Model DESC',
-     type_name_asc: 'Type ACS', type_name_desc: 'Type DESC',
-     manufacturer_name_asc: 'Manufacturer ACS', manufacturer_name_desc: 'Manufacturer DESC' }
+    {model_name_asc: 'Model ASC', model_name_desc: 'Model DESC',
+     type_name_asc: 'Type ASC', type_name_desc: 'Type DESC',
+     manufacturer_name_asc: 'Manufacturer ASC', manufacturer_name_desc: 'Manufacturer DESC'}
   end
 end
