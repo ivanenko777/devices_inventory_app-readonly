@@ -5,7 +5,7 @@
 <br>
 
 <strong>Filter:</strong>
-<%= link_to 'Remove all filters', url_for(@filter_params.merge(filter_status: nil, filter_device_type: nil, filter_device_manufacturer: nil, filter_device_model: nil, filter_office: nil)) %>
+<%= link_to 'Remove all filters', url_for(@filter_params.merge(filter_status: nil, filter_device_type: nil, filter_device_manufacturer: nil, filter_device_model: nil, filter_office: nil, filter_text: nil)) %>
 <br>
 
 <strong>By status:</strong>
@@ -43,6 +43,17 @@
   | <%= link_to name, url_for(@filter_params.merge(filter_office: office.id)) %>
 <% end %>
 <br>
+
+<%= form_tag url_for(devices_path), method: :get do %>
+  <strong>By SerialNo or AssetNo:</strong>
+  <%= hidden_field_tag 'filter_status', params[:filter_status] if params[:filter_status] %>
+  <%= hidden_field_tag 'filter_device_type', params[:filter_device_type] if params[:filter_device_type] %>
+  <%= hidden_field_tag 'filter_device_manufacturer', params[:filter_device_manufacturer] if params[:filter_device_manufacturer] %>
+  <%= hidden_field_tag 'filter_device_model', params[:filter_device_model] if params[:filter_device_model] %>
+  <%= hidden_field_tag 'filter_office', params[:filter_office] if params[:filter_office] %>
+  <%= text_field_tag 'filter_text', params[:filter_text] %>
+  <%= submit_tag "Filter" %>
+<% end %>
 
 <table>
   <thead>

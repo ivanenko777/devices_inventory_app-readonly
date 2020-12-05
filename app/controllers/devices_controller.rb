@@ -28,6 +28,7 @@ class DevicesController < ApplicationController
     @devices = @devices.filter_by_device_manufacturer(params[:filter_device_manufacturer]) if params[:filter_device_manufacturer].present?
     @devices = @devices.filter_by_device_model(params[:filter_device_model]) if params[:filter_device_model].present?
     @devices = @devices.filter_by_office(params[:filter_office]) if params[:filter_office].present?
+    @devices = @devices.filter_by_serial_no_or_asset_no_contains(params[:filter_text]) if params[:filter_text].present?
   end
 
   # GET /devices/1
@@ -83,7 +84,7 @@ class DevicesController < ApplicationController
   end
 
   def filter_params
-    keys = :filter_status, :filter_device_type, :filter_device_manufacturer, :filter_device_model, :filter_office
+    keys = :filter_status, :filter_device_type, :filter_device_manufacturer, :filter_device_model, :filter_office, :filter_text
     params.permit(keys)
   end
 end

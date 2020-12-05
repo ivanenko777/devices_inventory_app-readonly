@@ -16,6 +16,7 @@ class Device < ApplicationRecord
   }
   scope :filter_by_device_model, ->(device_model_id) { where(device_model_id: device_model_id) }
   scope :filter_by_office, ->(office_id) { joins(:room).where('rooms.office_id = ?', office_id) }
+  scope :filter_by_serial_no_or_asset_no_contains, ->(text) { where('devices.serial_no LIKE ? OR devices.asset_no LIKE ?', "%#{text}%", "%#{text}%") }
 
   validates :device_model_id, presence: true
   validates :room_id, presence: true
