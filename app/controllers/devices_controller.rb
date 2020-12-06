@@ -43,6 +43,14 @@ class DevicesController < ApplicationController
                  @devices.order_by_status_asc
                when 'status_desc'
                  @devices.order_by_status_desc
+               when 'room_asc'
+                 @devices.order_by_room_asc
+               when 'room_desc'
+                 @devices.order_by_room_desc
+               when 'last_created'
+                 @devices.order_by_last_created
+               when 'last_updated'
+                 @devices.order_by_last_updated
                else
                  @devices.order_by_default
                end
@@ -106,6 +114,8 @@ class DevicesController < ApplicationController
   end
 
   def order_by_values
-    { status_asc: 'Status ASC', status_desc: 'Status DESC' }
+    {status_asc: 'Status ASC', status_desc: 'Status DESC',
+     room_asc: 'Room ASC', room_desc: 'Room DESC',
+     last_created: 'Last created', last_updated: 'Last updated'}
   end
 end
