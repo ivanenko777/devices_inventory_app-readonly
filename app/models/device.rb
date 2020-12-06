@@ -30,4 +30,8 @@ class Device < ApplicationRecord
   validates :device_model_id, presence: true
   validates :room_id, presence: true
   validates :serial_no, presence: true, uniqueness: {scope: :device_model_id}
+
+  after_save do
+    DeviceHistory.new.add(self)
+  end
 end
