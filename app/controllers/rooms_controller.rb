@@ -51,10 +51,12 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(rooms_params)
 
-    if @room.save && params[:commit] == 'Create and New'
-      redirect_to new_room_path(office: @room), notice: 'Room was successfully created.'
-    elsif @room.save
-      redirect_to @room, notice: 'Room was successfully created.'
+    if @room.save
+      if params[:commit] == 'Create Room and New'
+        redirect_to new_room_path(office: @room), notice: 'Room was successfully created.'
+      else
+        redirect_to @room, notice: 'Room was successfully created.'
+      end
     else
       render :new
     end
@@ -94,8 +96,8 @@ class RoomsController < ApplicationController
   end
 
   def order_by_values
-    { room_name_asc: 'Room name ASC', room_name_desc: 'Room name DESC',
-      office_name_asc: 'Office name ASC', office_name_desc: 'Office name DESC',
-      office_address_asc: 'Office address ASC', office_address_desc: 'Office address DESC' }
+    {room_name_asc: 'Room name ASC', room_name_desc: 'Room name DESC',
+     office_name_asc: 'Office name ASC', office_name_desc: 'Office name DESC',
+     office_address_asc: 'Office address ASC', office_address_desc: 'Office address DESC'}
   end
 end

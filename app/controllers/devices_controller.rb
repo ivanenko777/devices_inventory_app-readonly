@@ -70,10 +70,12 @@ class DevicesController < ApplicationController
   def create
     @device = Device.new(device_params)
 
-    if @device.save && params[:commit] == 'Create and New'
-      redirect_to new_device_path(device_model: @device.device_model_id, room: @device.room_id), notice: 'Device was successfully created.'
-    elsif @device.save
-      redirect_to @device, notice: 'Device was successfully created.'
+    if @device.save
+      if params[:commit] == 'Create and New'
+        redirect_to new_device_path(device_model: @device.device_model_id, room: @device.room_id), notice: 'Device was successfully created.'
+      else
+        redirect_to @device, notice: 'Device was successfully created.'
+      end
     else
       render :new
     end
