@@ -1,0 +1,97 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Devices</h1>
+<%= link_to 'New Device', new_device_path %>
+<br>
+
+<strong>Filter:</strong>
+<%= link_to 'Remove all filters', url_for(@filter_params.merge(filter_status: nil, filter_device_type: nil, filter_device_manufacturer: nil, filter_device_model: nil, filter_office: nil, filter_text: nil, order_by: nil)) %>
+<br>
+
+<strong>By status:</strong>
+<%= link_to '[ Default ]', url_for(@filter_params.merge(filter_status: nil)) %>
+| <%= link_to 'All', url_for(@filter_params.merge(filter_status: 'all')) %>
+<% @filter_statuses.each do |key, value| %>
+  | <%= link_to key.to_s.humanize, url_for(@filter_params.merge(filter_status: value)) %>
+<% end %>
+<br>
+
+<strong>By device type:</strong>
+<%= link_to 'All', url_for(@filter_params.merge(filter_device_type: nil)) %>
+<% @filter_device_types.each do |device_type| %>
+  | <%= link_to device_type.name, url_for(@filter_params.merge(filter_device_type: device_type.id)) %>
+<% end %>
+<br>
+
+<strong>By device manufacturer:</strong>
+<%= link_to 'All', url_for(@filter_params.merge(filter_device_manufacturer: nil)) %>
+<% @filter_device_manufacturers.each do |device_manufacturer| %>
+  | <%= link_to device_manufacturer.name, url_for(@filter_params.merge(filter_device_manufacturer: device_manufacturer.id)) %>
+<% end %>
+<br>
+
+<strong>By device model:</strong>
+<%= link_to 'All', url_for(@filter_params.merge(filter_device_model: nil)) %>
+<% @filter_device_models.each do |device_model| %>
+  | <%= link_to "#{device_model.device_manufacturer.name} #{device_model.name}", url_for(@filter_params.merge(filter_device_model: device_model.id)) %>
+<% end %>
+<br>
+
+<strong>By office:</strong>
+<%= link_to '[ X ]', url_for(@filter_params.merge(filter_office: nil)) %>
+<% @filter_offices.each do |office| %>
+  <% name = office.is_active ? office.name : '(inactive) ' + office.name %>
+  | <%= link_to name, url_for(@filter_params.merge(filter_office: office.id)) %>
+<% end %>
+<br>
+
+<%= form_tag url_for(devices_path), method: :get do %>
+  <strong>By SerialNo or AssetNo:</strong>
+  <%= hidden_field_tag 'filter_status', params[:filter_status] if params[:filter_status] %>
+  <%= hidden_field_tag 'filter_device_type', params[:filter_device_type] if params[:filter_device_type] %>
+  <%= hidden_field_tag 'filter_device_manufacturer', params[:filter_device_manufacturer] if params[:filter_device_manufacturer] %>
+  <%= hidden_field_tag 'filter_device_model', params[:filter_device_model] if params[:filter_device_model] %>
+  <%= hidden_field_tag 'filter_office', params[:filter_office] if params[:filter_office] %>
+  <%= hidden_field_tag 'order_by', params[:order_by] if params[:order_by] %>
+  <%= text_field_tag 'filter_text', params[:filter_text] %>
+  <%= submit_tag "Filter" %>
+<% end %>
+
+<strong>Order by:</strong>
+<%= link_to '[ Default ]', url_for(@filter_params.merge(order_by: nil)) %>
+<% @order_by.each do |param, name| %>
+  | <%= link_to name, url_for(@filter_params.merge(order_by: param)) %>
+<% end %>
+<br>
+
+<table>
+  <thead>
+  <tr>
+    <th>Type</th>
+    <th>Model</th>
+    <th>Serial no</th>
+    <th>Asset no</th>
+    <th>Room</th>
+    <th>Address</th>
+    <th>Office</th>
+    <th>Status</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @devices.each do |device| %>
+    <tr>
+      <td><%= device.device_model.device_type.name %></td>
+      <td><%= "#{device.device_model.device_manufacturer.name} #{device.device_model.name}" %></td>
+      <td><%= device.serial_no %></td>
+      <td><%= device.asset_no %></td>
+      <td><%= device.room.name %></td>
+      <td><%= device.room.office.address %></td>
+      <td><%= device.room.office.name %></td>
+      <td><%= device.status.to_s.humanize %></td>
+      <td><%= link_to 'Info', device %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

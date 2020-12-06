@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :device_manufacturers
   resources :device_models
   resources :device_types
+  resources :devices
   resources :offices do
     get 'rooms', on: :member
   end
