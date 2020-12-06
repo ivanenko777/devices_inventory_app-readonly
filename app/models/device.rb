@@ -8,6 +8,7 @@ class Device < ApplicationRecord
 
   belongs_to :device_model
   belongs_to :room
+  has_many :device_histories
 
   scope :default_statuses, -> { where('devices.status NOT IN (2)') }
   scope :filter_by_status, ->(status_id) { where status: status_id }
@@ -29,4 +30,8 @@ class Device < ApplicationRecord
   validates :device_model_id, presence: true
   validates :room_id, presence: true
   validates :serial_no, presence: true, uniqueness: {scope: :device_model_id}
+
+  after_save do
+    DeviceHistory.new.add(self)
+  end
 end

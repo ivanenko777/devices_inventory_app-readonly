@@ -1,5 +1,6 @@
 class Room < ApplicationRecord
   belongs_to :office
+  has_many :device_histories
   has_many :devices
 
   scope :active, -> { joins(:office).where('rooms.is_active = 1 AND offices.is_active = 1') }

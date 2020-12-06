@@ -1,0 +1,26 @@
+<hr>
+<strong>History:</strong>
+<table>
+  <thead>
+  <tr>
+    <th>Status</th>
+    <th>Room</th>
+    <th>Address</th>
+    <th>Office</th>
+    <th>Created by</th>
+    <th>Created at</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% device_history.each do |history| %>
+    <tr>
+      <td><%= Device.statuses.key(history.status_id).to_s.humanize %></td>
+      <td><%= history.room.name %></td>
+      <td><%= history.room.office.address %></td>
+      <td><%= history.room.office.name %></td>
+      <td><%= history.created_by_id %></td>
+      <td><%= history.created_at %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

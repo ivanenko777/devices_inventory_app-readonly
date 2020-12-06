@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_04_140543) do
+ActiveRecord::Schema.define(version: 2020_12_06_185941) do
+
+  create_table "device_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "device_id"
+    t.bigint "room_id"
+    t.integer "status_id"
+    t.integer "created_by_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_by_id"], name: "index_device_histories_on_created_by_id"
+    t.index ["device_id"], name: "index_device_histories_on_device_id"
+    t.index ["room_id"], name: "index_device_histories_on_room_id"
+  end
 
   create_table "device_manufacturers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -84,6 +96,8 @@ ActiveRecord::Schema.define(version: 2020_12_04_140543) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "device_histories", "devices"
+  add_foreign_key "device_histories", "rooms"
   add_foreign_key "device_models", "device_manufacturers"
   add_foreign_key "device_models", "device_types"
   add_foreign_key "devices", "device_models"
