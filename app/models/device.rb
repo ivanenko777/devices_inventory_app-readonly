@@ -9,6 +9,7 @@ class Device < ApplicationRecord
   belongs_to :device_model
   belongs_to :room
 
+  scope :default_statuses, -> { where('devices.status NOT IN (2)') }
   scope :filter_by_status, ->(status_id) { where status: status_id }
   scope :filter_by_device_type, ->(device_type_id) { joins(device_model: :device_type).where("device_models.device_type_id = ?", device_type_id) }
   scope :filter_by_device_manufacturer, ->(device_manufacturer_id) {

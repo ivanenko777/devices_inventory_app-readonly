@@ -24,7 +24,13 @@ class DevicesController < ApplicationController
     @devices = Device.includes(device_model: [:device_type, :device_manufacturer], room: :office).where(nil)
 
     # FILTER
-    @devices = @devices.filter_by_status(params[:filter_status]) if params[:filter_status].present?
+    @devices = if params[:filter_status] == 'all'
+                 @devices
+               elsif params[:filter_status].present?
+                 @devices.filter_by_status(params[:filter_status])
+               else
+                 @devices.default_statuses
+               end
     @devices = @devices.filter_by_device_type(params[:filter_device_type]) if params[:filter_device_type].present?
     @devices = @devices.filter_by_device_manufacturer(params[:filter_device_manufacturer]) if params[:filter_device_manufacturer].present?
     @devices = @devices.filter_by_device_model(params[:filter_device_model]) if params[:filter_device_model].present?
