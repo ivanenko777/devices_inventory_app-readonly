@@ -1,5 +1,5 @@
 class DevicesController < ApplicationController
-  before_action :set_device, only: [:show, :edit, :update, :destroy]
+  before_action :set_device, only: [:show, :edit, :update, :destroy, :history]
 
   before_action only: [:new, :create, :edit, :update] do
     @device_models_for_select = DeviceModel.includes(:device_type, :device_manufacturer).order_by_default
@@ -57,7 +57,7 @@ class DevicesController < ApplicationController
   end
 
   # GET /devices/1
-  def show; end
+  def show;end
 
   # GET /devices/new
   def new
@@ -96,6 +96,12 @@ class DevicesController < ApplicationController
     # TODO: salyga pries destroy, pvz status ir t.t.
     @device.destroy
     redirect_to devices_url, notice: 'Room was successfully deleted.'
+  end
+
+  # GET /device/1/history
+  def history
+    @device_history = DeviceHistory.includes(room: :office).where(device_id: params[:id]).order(id: :desc)
+    render :show
   end
 
   private
