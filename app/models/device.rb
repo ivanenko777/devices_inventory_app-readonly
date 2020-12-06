@@ -8,6 +8,7 @@ class Device < ApplicationRecord
 
   belongs_to :device_model
   belongs_to :room
+  has_many :device_histories
 
   scope :default_statuses, -> { where('devices.status NOT IN (2)') }
   scope :filter_by_status, ->(status_id) { where status: status_id }
