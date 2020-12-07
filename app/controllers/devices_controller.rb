@@ -98,6 +98,9 @@ class DevicesController < ApplicationController
     # TODO: salyga pries destroy, pvz status ir t.t.
     @device.destroy
     redirect_to devices_url, notice: 'Device was successfully deleted.'
+  rescue ActiveRecord::StatementInvalid
+    flash[:alert] = "Device can't be deleted."
+    redirect_to @device
   end
 
   # GET /device/1/history

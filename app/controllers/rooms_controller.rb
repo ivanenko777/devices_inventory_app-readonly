@@ -78,6 +78,9 @@ class RoomsController < ApplicationController
   def destroy
     @room.destroy
     redirect_to rooms_url, notice: 'Room was successfully deleted.'
+  rescue ActiveRecord::StatementInvalid
+    flash[:alert] = "Room can't be deleted."
+    redirect_to @device
   end
 
   private

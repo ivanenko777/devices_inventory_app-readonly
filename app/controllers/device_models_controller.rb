@@ -76,6 +76,9 @@ class DeviceModelsController < ApplicationController
   def destroy
     @device_model.destroy
     redirect_to device_models_url, notice: 'Device model was successfully deleted.'
+  rescue ActiveRecord::StatementInvalid
+    flash[:alert] = "Device model can't be deleted."
+    redirect_to @device
   end
 
   private

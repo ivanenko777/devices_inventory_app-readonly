@@ -40,6 +40,9 @@ class DeviceTypesController < ApplicationController
   def destroy
     @device_type.destroy
     redirect_to device_types_path, notice: 'Device type was successfully deleted.'
+  rescue ActiveRecord::StatementInvalid
+    flash[:alert] = "Device type can't be deleted."
+    redirect_to @device
   end
 
   private
