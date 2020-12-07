@@ -57,7 +57,7 @@ class DevicesController < ApplicationController
   end
 
   # GET /devices/1
-  def show;end
+  def show; end
 
   # GET /devices/new
   def new
@@ -110,6 +110,9 @@ class DevicesController < ApplicationController
 
   def set_device
     @device = Device.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Device not found.'
+    redirect_to action: :index
   end
 
   def device_params

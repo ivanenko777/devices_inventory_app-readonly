@@ -46,6 +46,9 @@ class DeviceManufacturersController < ApplicationController
 
   def set_device_manufacturer
     @device_manufacturer = DeviceManufacturer.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Device manufacturer not found.'
+    redirect_to action: :index
   end
 
   def device_manufacturer_params

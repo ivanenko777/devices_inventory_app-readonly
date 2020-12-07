@@ -46,6 +46,9 @@ class DeviceTypesController < ApplicationController
 
   def set_device_type
     @device_type = DeviceType.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Device type not found.'
+    redirect_to action: :index
   end
 
   def device_type_params

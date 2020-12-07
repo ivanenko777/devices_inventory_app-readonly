@@ -82,6 +82,9 @@ class DeviceModelsController < ApplicationController
 
   def set_device_model
     @device_model = DeviceModel.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Device model not found.'
+    redirect_to action: :index
   end
 
   def device_model_params

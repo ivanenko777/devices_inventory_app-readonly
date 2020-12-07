@@ -84,6 +84,9 @@ class RoomsController < ApplicationController
 
   def set_room
     @room = Room.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Room not found.'
+    redirect_to action: :index
   end
 
   def rooms_params

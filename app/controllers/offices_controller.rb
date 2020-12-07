@@ -53,6 +53,9 @@ class OfficesController < ApplicationController
 
   def set_office
     @office = Office.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Office not found.'
+    redirect_to action: :index
   end
 
   def office_params
