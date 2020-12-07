@@ -97,7 +97,7 @@ class DevicesController < ApplicationController
   def destroy
     # TODO: salyga pries destroy, pvz status ir t.t.
     @device.destroy
-    redirect_to devices_url, notice: 'Room was successfully deleted.'
+    redirect_to devices_url, notice: 'Device was successfully deleted.'
   end
 
   # GET /device/1/history
