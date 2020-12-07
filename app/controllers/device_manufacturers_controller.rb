@@ -40,12 +40,18 @@ class DeviceManufacturersController < ApplicationController
   def destroy
     @device_manufacturer.destroy
     redirect_to device_manufacturers_url, notice: 'Device manufacturer was successfully deleted.'
+  rescue ActiveRecord::StatementInvalid
+    flash[:alert] = "Device manufacturer can't be deleted."
+    redirect_to @device
   end
 
   private
 
   def set_device_manufacturer
     @device_manufacturer = DeviceManufacturer.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Device manufacturer not found.'
+    redirect_to action: :index
   end
 
   def device_manufacturer_params

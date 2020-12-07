@@ -41,6 +41,9 @@ class OfficesController < ApplicationController
   def destroy
     @office.destroy
     redirect_to offices_url, notice: 'Office was successfully deleted.'
+  rescue ActiveRecord::StatementInvalid
+    flash[:alert] = "Office can't be deleted."
+    redirect_to @device
   end
 
   # GET /offices/1/rooms
@@ -53,6 +56,9 @@ class OfficesController < ApplicationController
 
   def set_office
     @office = Office.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Office not found.'
+    redirect_to action: :index
   end
 
   def office_params

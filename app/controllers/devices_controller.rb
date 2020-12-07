@@ -57,7 +57,7 @@ class DevicesController < ApplicationController
   end
 
   # GET /devices/1
-  def show;end
+  def show; end
 
   # GET /devices/new
   def new
@@ -97,7 +97,10 @@ class DevicesController < ApplicationController
   def destroy
     # TODO: salyga pries destroy, pvz status ir t.t.
     @device.destroy
-    redirect_to devices_url, notice: 'Room was successfully deleted.'
+    redirect_to devices_url, notice: 'Device was successfully deleted.'
+  rescue ActiveRecord::StatementInvalid
+    flash[:alert] = "Device can't be deleted."
+    redirect_to @device
   end
 
   # GET /device/1/history
@@ -110,6 +113,9 @@ class DevicesController < ApplicationController
 
   def set_device
     @device = Device.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Device not found.'
+    redirect_to action: :index
   end
 
   def device_params

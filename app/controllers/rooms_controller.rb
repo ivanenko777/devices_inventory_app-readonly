@@ -78,12 +78,18 @@ class RoomsController < ApplicationController
   def destroy
     @room.destroy
     redirect_to rooms_url, notice: 'Room was successfully deleted.'
+  rescue ActiveRecord::StatementInvalid
+    flash[:alert] = "Room can't be deleted."
+    redirect_to @device
   end
 
   private
 
   def set_room
     @room = Room.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Room not found.'
+    redirect_to action: :index
   end
 
   def rooms_params
