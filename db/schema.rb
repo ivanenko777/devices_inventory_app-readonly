@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_12_06_185941) do
 
-  create_table "device_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "device_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "device_id"
     t.bigint "room_id"
     t.integer "status_id"
@@ -24,13 +24,13 @@ ActiveRecord::Schema.define(version: 2020_12_06_185941) do
     t.index ["room_id"], name: "index_device_histories_on_room_id"
   end
 
-  create_table "device_manufacturers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "device_manufacturers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "device_models", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "device_models", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "device_manufacturer_id"
     t.bigint "device_type_id"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_185941) do
     t.index ["device_type_id"], name: "index_device_models_on_device_type_id"
   end
 
-  create_table "device_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "device_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "sys_name"
     t.datetime "created_at", null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_185941) do
     t.index ["sys_name"], name: "index_device_types_on_sys_name", unique: true
   end
 
-  create_table "devices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "devices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "device_model_id"
     t.bigint "room_id"
     t.string "asset_no"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_185941) do
     t.index ["updated_by_id"], name: "index_devices_on_updated_by_id"
   end
 
-  create_table "offices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "offices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.boolean "is_active"
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_185941) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "office_id"
     t.string "name"
     t.boolean "is_active"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_185941) do
     t.index ["office_id"], name: "index_rooms_on_office_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "full_name"
     t.string "email"
     t.string "password_digest"
