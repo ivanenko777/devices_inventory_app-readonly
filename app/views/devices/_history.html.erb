@@ -13,7 +13,7 @@
   </thead>
   <tbody>
   <% device_history.each do |history| %>
-    <tr>
+    <tr <%= 'class="table-primary"'.html_safe if history == device_history.first %>>
       <td><%= Device.statuses.key(history.status_id).to_s.humanize %></td>
       <td><%= history.room.name %></td>
       <td><%= history.room.office.address %></td>
