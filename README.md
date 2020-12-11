@@ -1,24 +1,12 @@
-# README
+# DEVICES APP
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Application including CRUD operations, authentication, routing and more.
 
-Things you may want to cover:
+## Try it out with [Docker](https://www.docker.com/)
 
-* Ruby version
+You need Docker installed.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    docker-compose up -d
+    docker-compose run app rails db:schema:load
+    docker-compose run app rails db:seed
+    docker-compose down --volumes
