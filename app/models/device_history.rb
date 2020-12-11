@@ -1,6 +1,8 @@
 class DeviceHistory < ApplicationRecord
   belongs_to :device
   belongs_to :room
+  belongs_to :created_by, class_name: 'User', foreign_key: 'created_by_id', optional: true
+  scope :created_by, ->(user) { where(created_by_id: user.id) }
 
   validates :device_id, presence: true
   validates :room_id, presence: true
@@ -14,8 +16,8 @@ class DeviceHistory < ApplicationRecord
     last_record = DeviceHistory.where(device_id: device.id).last
 
     if last_record == nil ||
-        last_record.room_id != device.room_id ||
-        last_record.status_id != Device.statuses[device.status]
+      last_record.room_id != device.room_id ||
+      last_record.status_id != Device.statuses[device.status]
 
       self.device_id = device.id
       self.room_id = device.room_id

@@ -105,7 +105,7 @@ class DevicesController < ApplicationController
 
   # GET /device/1/history
   def history
-    @device_history = DeviceHistory.includes(room: :office).where(device_id: params[:id]).order(id: :desc)
+    @device_history = DeviceHistory.includes(:created_by, room: :office).where(device_id: params[:id]).order(id: :desc)
     render :show
   end
 
