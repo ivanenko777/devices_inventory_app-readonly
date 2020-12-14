@@ -1,4 +1,7 @@
-<h1>Edit Device type #<%= @device_type.id %></h1>
+<% content_for :page_head do %>
+  <h1 class="h2">Edit Device type #<%= @device_type.id %></h1>
+<% end %>
+
 <%= link_to 'Back', @device_type %>
 
 <%= render 'form', device_type: @device_type %>
