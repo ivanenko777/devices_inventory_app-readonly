@@ -2,11 +2,7 @@
   <h1 class="h2">Office #<%= @office.id %></h1>
 <% end %>
 
-<%= link_to 'Back', offices_path %>
-| <%= link_to 'Info', @office %>
-| <%= link_to 'Rooms', rooms_office_path(@office) %>
-| <%= link_to 'Edit', edit_office_path(@office) %>
-| <%= link_to 'Delete', @office, method: :delete, data: {confirm: 'Are you sure?'} %>
+<%= render 'menu' %>
 
 <p>
   <strong>Name:</strong>
