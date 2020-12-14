@@ -1,7 +1,7 @@
 <h1>Device types</h1>
 <%= link_to 'New Device Type', new_device_type_path %>
 
-<table>
+<table class="table table-striped table-sm">
   <thead>
   <tr>
     <th>Sys name</th>
@@ -9,7 +9,6 @@
     <th></th>
   </tr>
   </thead>
-
   <tbody>
   <% @device_types.each do |device_type| %>
     <tr>
