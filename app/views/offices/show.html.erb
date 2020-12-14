@@ -1,4 +1,7 @@
-<h1>Office #<%= @office.id %></h1>
+<% content_for :page_head do %>
+  <h1 class="h2">Office #<%= @office.id %></h1>
+<% end %>
+
 <%= link_to 'Back', offices_path %>
 | <%= link_to 'Info', @office %>
 | <%= link_to 'Rooms', rooms_office_path(@office) %>
