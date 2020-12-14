@@ -2,9 +2,7 @@
   <h1 class="h2">Device manufacturer #<%= @device_manufacturer.id %></h1>
 <% end %>
 
-<%= link_to 'Back', device_manufacturers_path %>
-| <%= link_to 'Edit', edit_device_manufacturer_path(@device_manufacturer) %>
-| <%= link_to 'Delete', @device_manufacturer, method: :delete, data: {confirm: 'Are you sure?'} %>
+<%= render 'menu' %>
 
 <p>
   <strong>Name:</strong>

@@ -1,0 +1,9 @@
+<% content_for :page_menu do %>
+  <li class="nav-item"><%= active_link_to 'New Device', new_device_manufacturer_path, class: 'nav-link link-success' %></li>
+  <li class="nav-item"><%= active_link_to 'List', device_manufacturers_path, class: 'nav-link', active: :exclusive %></li>
+  <% if @device_manufacturer && params[:id] %>
+    <li class="nav-item"><%= active_link_to 'Info', @device_manufacturer, class: 'nav-link', active: :exclusive %></li>
+    <li class="nav-item"><%= active_link_to 'Edit', edit_device_manufacturer_path(@device_manufacturer), class: 'nav-link' %></li>
+    <li class="nav-item"><%= link_to 'Delete', @device_manufacturer, method: :delete, data: { confirm: 'Are you sure?' }, class: 'nav-link' %></li>
+  <% end %>
+<% end %>
