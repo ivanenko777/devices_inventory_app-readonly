@@ -1,4 +1,7 @@
-<h1>New Device model</h1>
+<% content_for :page_head do %>
+  <h1 class="h2">New Device model</h1>
+<% end %>
+
 <%= link_to 'Back', device_models_path %>
 
 <%= render 'form', device_model: @device_model %>
