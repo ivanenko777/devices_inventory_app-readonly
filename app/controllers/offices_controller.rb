@@ -49,7 +49,7 @@ class OfficesController < ApplicationController
   # GET /offices/1/rooms
   def rooms
     @rooms = Room.filter_by_office_id(params[:id])
-    render :show
+    render :rooms
   end
 
   private
