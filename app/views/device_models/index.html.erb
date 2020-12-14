@@ -2,8 +2,7 @@
   <h1 class="h2">Device models</h1>
 <% end %>
 
-<%= link_to 'New Device model', new_device_model_path %>
-<br>
+<%= render 'menu' %>
 
 <strong>Filter:</strong>
 <%= link_to 'Remove all filter', url_for(@filter_params.merge(filter_active: nil, filter_device_type: nil, filter_device_manufacturer: nil, filter_model: nil, order_by: nil)) %>

@@ -2,9 +2,7 @@
   <h1 class="h2">Device model #<%= @device_model.id %></h1>
 <% end %>
 
-<%= link_to 'Back', device_models_path %>
-| <%= link_to 'Edit', edit_device_model_path(@device_model) %>
-| <%= link_to 'Delete', @device_model, method: :delete, data: {confirm: 'Are you sure?'} %>
+<%= render 'menu' %>
 
 <p>
   <strong>Type:</strong>
