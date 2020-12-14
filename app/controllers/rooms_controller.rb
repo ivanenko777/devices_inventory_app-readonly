@@ -58,6 +58,7 @@ class RoomsController < ApplicationController
         redirect_to @room, notice: 'Room was successfully created.'
       end
     else
+      flash[:alert] = 'This form has errors.'
       render :new
     end
   end
@@ -70,6 +71,7 @@ class RoomsController < ApplicationController
     if @room.update(rooms_params)
       redirect_to @room, notice: 'Room was successfully updated.'
     else
+      flash[:alert] = 'This form has errors.'
       render :edit
     end
   end

@@ -20,6 +20,7 @@ class DeviceManufacturersController < ApplicationController
     if @device_manufacturer.save
       redirect_to @device_manufacturer, notice: 'Device manufacturer was successfully created.'
     else
+      flash[:alert] = 'This form has errors.'
       render :new
     end
   end
@@ -32,6 +33,7 @@ class DeviceManufacturersController < ApplicationController
     if @device_manufacturer.update(device_manufacturer_params)
       redirect_to @device_manufacturer, notice: 'Device manufacturer was successfully updated.'
     else
+      flash[:alert] = 'This form has errors.'
       render :edit
     end
   end

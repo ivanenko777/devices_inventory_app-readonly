@@ -20,6 +20,7 @@ class DeviceTypesController < ApplicationController
     if @device_type.save
       redirect_to @device_type, notice: 'Device type was successfully created.'
     else
+      flash[:alert] = 'This form has errors.'
       render :new
     end
   end
@@ -32,6 +33,7 @@ class DeviceTypesController < ApplicationController
     if @device_type.update(device_type_params)
       redirect_to @device_type, notice: 'Device type was successfully updated.'
     else
+      flash[:alert] = 'This form has errors.'
       render :edit
     end
   end

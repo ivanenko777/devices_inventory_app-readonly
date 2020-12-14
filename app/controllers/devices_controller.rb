@@ -77,6 +77,7 @@ class DevicesController < ApplicationController
         redirect_to @device, notice: 'Device was successfully created.'
       end
     else
+      flash[:alert] = 'This form has errors.'
       render :new
     end
   end
@@ -89,6 +90,7 @@ class DevicesController < ApplicationController
     if @device.update(device_params)
       redirect_to @device, notice: 'Device was successfully updated.'
     else
+      flash[:alert] = 'This form has errors.'
       render :edit
     end
   end
