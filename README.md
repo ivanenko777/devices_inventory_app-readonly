@@ -22,3 +22,5 @@ You need Docker installed.
 
     # Stop app:
     docker-compose down --volumes
+
+And open in browser http://localhost:3000/
