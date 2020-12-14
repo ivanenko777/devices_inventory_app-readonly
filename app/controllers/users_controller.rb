@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     redirect_to users_url, notice: 'User was successfully deleted.'
   rescue ActiveRecord::StatementInvalid
     flash[:alert] = "User can't be deleted."
-    redirect_to @device
+    redirect_to @user
   end
 
   private

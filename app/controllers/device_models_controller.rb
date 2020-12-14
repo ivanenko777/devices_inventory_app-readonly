@@ -78,7 +78,7 @@ class DeviceModelsController < ApplicationController
     redirect_to device_models_url, notice: 'Device model was successfully deleted.'
   rescue ActiveRecord::StatementInvalid
     flash[:alert] = "Device model can't be deleted."
-    redirect_to @device
+    redirect_to @device_model
   end
 
   private

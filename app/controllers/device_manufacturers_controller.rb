@@ -42,7 +42,7 @@ class DeviceManufacturersController < ApplicationController
     redirect_to device_manufacturers_url, notice: 'Device manufacturer was successfully deleted.'
   rescue ActiveRecord::StatementInvalid
     flash[:alert] = "Device manufacturer can't be deleted."
-    redirect_to @device
+    redirect_to @device_manufacturer
   end
 
   private

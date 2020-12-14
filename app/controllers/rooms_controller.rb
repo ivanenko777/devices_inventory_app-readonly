@@ -80,7 +80,7 @@ class RoomsController < ApplicationController
     redirect_to rooms_url, notice: 'Room was successfully deleted.'
   rescue ActiveRecord::StatementInvalid
     flash[:alert] = "Room can't be deleted."
-    redirect_to @device
+    redirect_to @room
   end
 
   private

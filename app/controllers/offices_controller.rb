@@ -43,7 +43,7 @@ class OfficesController < ApplicationController
     redirect_to offices_url, notice: 'Office was successfully deleted.'
   rescue ActiveRecord::StatementInvalid
     flash[:alert] = "Office can't be deleted."
-    redirect_to @device
+    redirect_to @office
   end
 
   # GET /offices/1/rooms
