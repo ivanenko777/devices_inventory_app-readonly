@@ -2,8 +2,7 @@
   <h1 class="h2">Rooms</h1>
 <% end %>
 
-<%= link_to 'New Room', new_room_path %>
-<br>
+<%= render 'menu' %>
 
 <strong>Filter:</strong>
 <%= link_to 'Remove all filter', url_for(@filter_params.merge(filter_active: nil, filter_office: nil, filter_room: nil, order_by: nil)) %>

@@ -2,9 +2,7 @@
   <h1 class="h2">Room #<%= @room.id %></h1>
 <% end %>
 
-<%= link_to 'Back', rooms_path %>
-| <%= link_to 'Edit', edit_room_path(@room) %>
-| <%= link_to 'Delete', @room, method: :delete, data: {confirm: 'Are you sure?'} %>
+<%= render 'menu' %>
 
 <p>
   <strong>Office:</strong>
