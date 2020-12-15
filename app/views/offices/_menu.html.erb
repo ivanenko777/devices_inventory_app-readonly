@@ -1,0 +1,10 @@
+<% content_for :page_menu do %>
+  <li class="nav-item"><%= active_link_to 'New', new_office_path, class: 'nav-link link-success' %></li>
+  <li class="nav-item"><%= active_link_to 'List', offices_path, class: 'nav-link', active: :exclusive %></li>
+  <% if @office && params[:id] %>
+    <li class="nav-item"><%= active_link_to 'Info', @office, class: 'nav-link', active: :exclusive %></li>
+    <li class="nav-item"><%= active_link_to 'Rooms', rooms_office_path(@office), class: 'nav-link' %></li>
+    <li class="nav-item"><%= active_link_to 'Edit', edit_office_path(@office), class: 'nav-link' %></li>
+    <li class="nav-item"><%= link_to 'Delete', @office, method: :delete, data: { confirm: 'Are you sure?' }, class: 'nav-link' %></li>
+  <% end %>
+<% end %>

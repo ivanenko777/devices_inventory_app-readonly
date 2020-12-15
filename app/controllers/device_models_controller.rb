@@ -56,6 +56,7 @@ class DeviceModelsController < ApplicationController
     if @device_model.save
       redirect_to @device_model, notice: 'Device model was successfully created.'
     else
+      flash[:alert] = 'This form has errors.'
       render :new
     end
   end
@@ -68,6 +69,7 @@ class DeviceModelsController < ApplicationController
     if @device_model.update(device_model_params)
       redirect_to @device_model, notice: 'Device model was successfully updated.'
     else
+      flash[:alert] = 'This form has errors.'
       render :edit
     end
   end

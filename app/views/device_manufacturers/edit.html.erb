@@ -1,4 +1,7 @@
-<h1>Edit Device manufacturer #<%= @device_manufacturer.id %></h1>
-<%= link_to 'Back', @device_manufacturer %>
+<% content_for :page_head do %>
+  <h1 class="h2">Edit Device manufacturer #<%= @device_manufacturer.id %></h1>
+<% end %>
+
+<%= render 'menu' %>
 
 <%= render 'form', device_manufacturer: @device_manufacturer %>

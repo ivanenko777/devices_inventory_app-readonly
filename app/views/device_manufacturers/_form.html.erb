@@ -1,22 +1,4 @@
-<%= form_with(model: device_manufacturer, local: true) do |form| %>
-  <% if device_manufacturer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(device_manufacturer.errors.count, "error") %> prohibited this device manufacturer from being saved:</h2>
-
-      <ul>
-        <% device_manufacturer.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%= bootstrap_form_with model: device_manufacturer, local: true, layout: :horizontal do |form| %>
+  <%= form.text_field :name, add_control_col_class: 'col-lg-4 mb-2' %>
+  <%= form.submit %>
 <% end %>

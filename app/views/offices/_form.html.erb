@@ -1,32 +1,6 @@
-<%= form_with(model: office, local: true) do |form| %>
-  <% if office.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(office.errors.count, "error") %> prohibited this office from being saved:</h2>
-
-      <ul>
-        <% office.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :is_active %>
-    <%= form.check_box :is_active %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%= bootstrap_form_with model: office, local: true, layout: :horizontal do |form| %>
+  <%= form.text_field :name, add_control_col_class: 'col-lg-4 mb-2' %>
+  <%= form.text_field :address, add_control_col_class: 'col-lg-4 mb-2' %>
+  <%= form.check_box :is_active, class: 'mb-2' %>
+  <%= form.submit %>
 <% end %>

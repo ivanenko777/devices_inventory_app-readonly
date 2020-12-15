@@ -1,15 +1,16 @@
-<h1>Device manufacturers</h1>
-<%= link_to 'New Device manufacturer', new_device_manufacturer_path %>
+<% content_for :page_head do %>
+  <h1 class="h2">Device manufacturers</h1>
+<% end %>
 
+<%= render 'menu' %>
 
-<table>
+<table class="table table-striped table-sm">
   <thead>
   <tr>
     <th>Name</th>
     <th></th>
   </tr>
   </thead>
-
   <tbody>
   <% @device_manufacturers.each do |device_manufacturer| %>
     <tr>

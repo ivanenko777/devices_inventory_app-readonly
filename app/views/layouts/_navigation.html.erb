@@ -1,0 +1,17 @@
+<% if logged_in? %>
+  <div id="user-info">
+    Hello, <%= current_user.full_name %>&nbsp;&nbsp;&nbsp;
+    <%= link_to 'Logout', logout_path, class: 'btn btn-outline-secondary btn-sm' %>
+  </div>
+  <ul class="nav flex-column">
+    <li class="nav-item"><%= active_link_to 'Devices', devices_path, class: 'nav-link', active: :inclusive %></li>
+    <li class="nav-item"><%= active_link_to 'Models', device_models_path, class: 'nav-link', active: :inclusive %></li>
+    <li class="nav-item"><%= active_link_to 'Manufacturers', device_manufacturers_path, class: 'nav-link', active: :inclusive %></li>
+    <li class="nav-item"><%= active_link_to 'Types', device_types_path, class: 'nav-link', active: :inclusive %></li>
+    <li class="nav-item"><%= active_link_to 'Offices', offices_path, class: 'nav-link', active: :inclusive %></li>
+    <li class="nav-item"><%= active_link_to 'Rooms', rooms_path, class: 'nav-link', active: :inclusive %></li>
+    <li class="nav-item"><%= active_link_to 'Users', users_path, class: 'nav-link', active: :inclusive %></li>
+  </ul>
+<% else %>
+  <li class="nav-item"><%= active_link_to 'Login', login_path, class: 'nav-link' %></li>
+<% end %>

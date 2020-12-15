@@ -1,6 +1,10 @@
-<hr>
-<strong>History:</strong>
-<table>
+<% content_for :page_head do %>
+  <h1 class="h2">Device #<%= @device.id %> history</h1>
+<% end %>
+
+<%= render 'menu' %>
+
+<table class="table table-striped table-sm">
   <thead>
   <tr>
     <th>Status</th>
@@ -12,8 +16,8 @@
   </tr>
   </thead>
   <tbody>
-  <% device_history.each do |history| %>
-    <tr>
+  <% @device_history.each do |history| %>
+    <tr <%= 'class="table-primary"'.html_safe if history == @device_history.first %>>
       <td><%= Device.statuses.key(history.status_id).to_s.humanize %></td>
       <td><%= history.room.name %></td>
       <td><%= history.room.office.address %></td>

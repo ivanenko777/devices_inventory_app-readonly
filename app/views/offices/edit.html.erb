@@ -1,4 +1,7 @@
-<h1>Edit office #<%= @office.id %></h1>
-<%= link_to 'Back', @office %>
+<% content_for :page_head do %>
+  <h1 class="h2">Edit Office #<%= @office.id %></h1>
+<% end %>
+
+<%= render 'menu' %>
 
 <%= render 'form', office: @office %>

@@ -1,9 +1,8 @@
-<h1>Device #<%= @device.id %></h1>
-<%= link_to 'Back', devices_path %>
-| <%= link_to 'Info', @device %>
-| <%= link_to 'History', history_device_path(@device) %>
-| <%= link_to 'Edit', edit_device_path(@device) %>
-| <%= link_to 'Delete', @device, method: :delete, data: {confirm: 'Are you sure?'} %>
+<% content_for :page_head do %>
+  <h1 class="h2">Device #<%= @device.id %></h1>
+<% end %>
+
+<%= render 'menu' %>
 
 <p>
   <strong>Status:</strong>
@@ -63,5 +62,3 @@
   <strong>Updated at:</strong>
   <%= @device.updated_by.full_name %>
 </p>
-
-<%= render 'history', device_history: @device_history if action_name == 'history' %>

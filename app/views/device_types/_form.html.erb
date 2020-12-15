@@ -1,27 +1,5 @@
-<%= form_with(model: device_type, local: true) do |form| %>
-  <% if device_type.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(device_type.errors.count, "error") %> prohibited this device type from being saved:</h2>
-
-      <ul>
-        <% device_type.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :sys_name %>
-    <%= form.text_field :sys_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%= bootstrap_form_with model: device_type, local: true, layout: :horizontal do |form| %>
+  <%= form.text_field :sys_name, add_control_col_class: 'col-lg-4 mb-2' %>
+  <%= form.text_field :name, add_control_col_class: 'col-lg-4 mb-2' %>
+  <%= form.submit %>
 <% end %>

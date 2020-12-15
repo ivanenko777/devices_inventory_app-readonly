@@ -1,4 +1,7 @@
-<h1>New Device</h1>
-<%= link_to 'Back', devices_path %>
+<% content_for :page_head do %>
+  <h1 class="h2">New Device</h1>
+<% end %>
+
+<%= render 'menu' %>
 
 <%= render 'form', device: @device %>

@@ -1,4 +1,7 @@
-<h1>Edit user #<%= @user.id %></h1>
-<%= link_to 'Back', @user %>
+<% content_for :page_head do %>
+  <h1 class="h2">Edit User #<%= @user.id %></h1>
+<% end %>
+
+<%= render 'menu' %>
 
 <%= render 'form', user: @user %>

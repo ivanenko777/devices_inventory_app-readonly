@@ -21,6 +21,7 @@ class OfficesController < ApplicationController
     if @office.save
       redirect_to @office, notice: 'Office was successfully created.'
     else
+      flash[:alert] = 'This form has errors.'
       render :new
     end
   end
@@ -33,6 +34,7 @@ class OfficesController < ApplicationController
     if @office.update(office_params)
       redirect_to @office, notice: 'Office was successfully updates.'
     else
+      flash[:alert] = 'This form has errors.'
       render :edit
     end
   end
@@ -49,7 +51,7 @@ class OfficesController < ApplicationController
   # GET /offices/1/rooms
   def rooms
     @rooms = Room.filter_by_office_id(params[:id])
-    render :show
+    render :rooms
   end
 
   private

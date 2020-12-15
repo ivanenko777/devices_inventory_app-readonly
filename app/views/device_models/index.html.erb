@@ -1,6 +1,8 @@
-<h1>Device models</h1>
-<%= link_to 'New Device model', new_device_model_path %>
-<br>
+<% content_for :page_head do %>
+  <h1 class="h2">Device models</h1>
+<% end %>
+
+<%= render 'menu' %>
 
 <strong>Filter:</strong>
 <%= link_to 'Remove all filter', url_for(@filter_params.merge(filter_active: nil, filter_device_type: nil, filter_device_manufacturer: nil, filter_model: nil, order_by: nil)) %>
@@ -44,7 +46,7 @@
 
 <br>
 
-<table>
+<table class="table table-striped table-sm">
   <thead>
   <tr>
     <th>Type</th>
@@ -54,7 +56,6 @@
     <th></th>
   </tr>
   </thead>
-
   <tbody>
   <% @device_models.each do |device_model| %>
     <tr>

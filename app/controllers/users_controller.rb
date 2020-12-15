@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user, notice: 'User was successfully created.'
     else
+      flash[:alert] = 'This form has errors.'
       render :new
     end
   end
@@ -33,6 +34,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to @user, notice: 'User was successfully updated.'
     else
+      flash[:alert] = 'This form has errors.'
       render :edit
     end
   end

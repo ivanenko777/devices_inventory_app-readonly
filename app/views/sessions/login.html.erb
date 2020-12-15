@@ -1,17 +1,11 @@
-<h1>Login</h1>
+<% content_for :page_head do %>
+  <h1 class="h2">Login</h1>
+<% end %>
 
-<%= form_tag login_path do |form| %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
-  </div>
+<div class="alert alert-info mb-3">Login with email: demo@demo.lt and password demo</div>
 
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
-
-  <div class="actions">
-    <%= submit_tag "Login" %>
-  </div>
+<%= bootstrap_form_with url: login_path, local: true, layout: :horizontal do |form| %>
+  <%= form.email_field :email, class: 'mb-2', add_control_col_class: 'col-sm-10 col-lg-4' %>
+  <%= form.password_field :password, class: 'mb-2', add_control_col_class: 'col-sm-10 col-lg-4' %>
+  <%= form.submit "Login", class: 'btn btn-primary' %>
 <% end %>

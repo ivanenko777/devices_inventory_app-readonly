@@ -1,7 +1,8 @@
-<h1>Device type #<%= @device_type.id %></h1>
-<%= link_to 'Back', device_types_path %>
-| <%= link_to 'Edit', edit_device_type_path(@device_type) %>
-| <%= link_to 'Delete', @device_type, method: :delete, data: {confirm: 'Are you sure?'} %>
+<% content_for :page_head do %>
+  <h1 class="h2">Device type #<%= @device_type.id %></h1>
+<% end %>
+
+<%= render 'menu' %>
 
 <p>
   <strong>Sys name:</strong>
