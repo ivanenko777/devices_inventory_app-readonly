@@ -1,33 +1,7 @@
-<%= form_with(model: room, local: true) do |form| %>
-  <% if room.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</h2>
-
-      <ul>
-        <% room.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :office_id %>
-    <%= form.collection_select :office_id, @offices_for_select, :id, :office_info_for_select, prompt: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :is_active %>
-    <%= form.check_box :is_active %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-    <%= form.submit('Create and New') if room.new_record? %>
-  </div>
+<%= bootstrap_form_with model: room, local: true, layout: :horizontal do |form| %>
+  <%= form.collection_select :office_id, @offices_for_select, :id, :office_info_for_select, prompt: true, add_control_col_class: 'col-lg-4 mb-2' %>
+  <%= form.text_field :name, add_control_col_class: 'col-lg-4 mb-2' %>
+  <%= form.check_box :is_active, add_control_col_class: 'mb-2' %>
+  <%= form.submit %>
+  <%= form.submit('Create and New') if room.new_record? %>
 <% end %>
