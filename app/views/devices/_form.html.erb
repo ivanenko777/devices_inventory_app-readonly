@@ -4,6 +4,7 @@
   <%= form.collection_select :room_id, @rooms_for_select, :id, :room_info_for_select, prompt: true, class: 'mb-2', add_control_col_class: 'col-lg-4 mb-2' %>
   <%= form.text_field :serial_no, add_control_col_class: 'col-lg-4 mb-2' %>
   <%= form.text_field :asset_no, add_control_col_class: 'col-lg-4 mb-2' %>
+  <%= form.text_area :note, add_control_col_class: 'col-lg-4 mb-2' %>
   <%= form.submit %>
   <%= form.submit('Create and New') if device.new_record? %>
 <% end %>

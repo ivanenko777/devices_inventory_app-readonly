@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_06_185941) do
+ActiveRecord::Schema.define(version: 2020_12_15_194705) do
 
   create_table "device_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.bigint "device_id"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_185941) do
     t.integer "status"
     t.integer "created_by_id"
     t.integer "updated_by_id"
+    t.text "note"
     t.index ["created_by_id"], name: "index_devices_on_created_by_id"
     t.index ["device_model_id", "serial_no"], name: "index_devices_on_device_model_id_and_serial_no", unique: true
     t.index ["device_model_id"], name: "index_devices_on_device_model_id"

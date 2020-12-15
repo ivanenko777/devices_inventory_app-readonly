@@ -121,7 +121,7 @@ class DevicesController < ApplicationController
   end
 
   def device_params
-    params.require(:device).permit(:device_model_id, :room_id, :serial_no, :asset_no, :status)
+    params.require(:device).permit(:device_model_id, :room_id, :serial_no, :asset_no, :status, :note)
   end
 
   def filter_params
