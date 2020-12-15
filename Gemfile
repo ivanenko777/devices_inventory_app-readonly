@@ -29,6 +29,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Creates a link tag of the given name using a URL created by the set of options
 gem 'active_link_to', '~> 1.0'
 
+gem "bootstrap_form", "~> 4.0"
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
