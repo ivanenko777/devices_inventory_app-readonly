@@ -9,6 +9,7 @@
 - MySQL 5.7
 - Docker 20.10.0
 - Docker compose (Compose file format 3.7)
+- Bootstrap 5.0.0-beta1
 
 ## Try it out with [Docker](https://www.docker.com/)
 
