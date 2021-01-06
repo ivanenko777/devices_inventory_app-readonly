@@ -18,7 +18,7 @@ jobs:
          name: id_rsa # optional
          known_hosts: ${{ secrets.KNOWN_HOSTS }}
     - run: |
-        git remote add github git@github.com:ivanenko777/devices_location_history-readonly.git
+        git remote add github git@github.com:ivanenko777/devices_inventory_app-readonly.git
         git config --global user.email "63673857+ivanenko777@users.noreply.github.com"
         git config --global user.name "ivanenko777"
         git checkout main
