@@ -8,7 +8,7 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: app
       MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_PASSWORD: password2
     ports:
       - "3307:3306"
 
@@ -24,7 +24,7 @@ services:
     links:
       - db
     environment:
-      DB_USER: root
+      DB_USER: user
       DB_NAME: app
-      DB_PASSWORD: password
+      DB_PASSWORD: password2
       DB_HOST: db
