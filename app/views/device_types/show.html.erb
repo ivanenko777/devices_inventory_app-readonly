@@ -1,0 +1,15 @@
+<% content_for :page_head do %>
+  <h1 class="h2">Device type #<%= @device_type.id %></h1>
+<% end %>
+
+<%= render 'menu' %>
+
+<p>
+  <strong>Sys name:</strong>
+  <%= @device_type.sys_name %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @device_type.name %>
+</p>

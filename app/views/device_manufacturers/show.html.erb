@@ -1,0 +1,10 @@
+<% content_for :page_head do %>
+  <h1 class="h2">Device manufacturer #<%= @device_manufacturer.id %></h1>
+<% end %>
+
+<%= render 'menu' %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @device_manufacturer.name %>
+</p>

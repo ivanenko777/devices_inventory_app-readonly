@@ -1,0 +1,9 @@
+<% content_for :page_menu do %>
+  <li class="nav-item"><%= active_link_to 'New', new_room_path, class: 'nav-link link-success' %></li>
+  <li class="nav-item"><%= active_link_to 'List', rooms_path, class: 'nav-link', active: :exclusive %></li>
+  <% if @room && params[:id] %>
+    <li class="nav-item"><%= active_link_to 'Info', @room, class: 'nav-link', active: :exclusive %></li>
+    <li class="nav-item"><%= active_link_to 'Edit', edit_room_path(@room), class: 'nav-link' %></li>
+    <li class="nav-item"><%= link_to 'Delete', @room, method: :delete, data: { confirm: 'Are you sure?' }, class: 'nav-link' %></li>
+  <% end %>
+<% end %>

@@ -1,0 +1,22 @@
+<% content_for :page_head do %>
+  <h1 class="h2">Device manufacturers</h1>
+<% end %>
+
+<%= render 'menu' %>
+
+<table class="table table-striped table-sm">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @device_manufacturers.each do |device_manufacturer| %>
+    <tr>
+      <td><%= device_manufacturer.name %></td>
+      <td><%= link_to 'Info', device_manufacturer %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

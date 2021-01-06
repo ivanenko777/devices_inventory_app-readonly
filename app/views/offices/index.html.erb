@@ -1,0 +1,26 @@
+<% content_for :page_head do %>
+  <h1 class="h2">Offices</h1>
+<% end %>
+
+<%= render 'menu' %>
+
+<table class="table table-striped table-sm">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Is active</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @offices.each do |office| %>
+    <tr>
+      <td><%= office.name %></td>
+      <td><%= office.address %></td>
+      <td><%= office.is_active %></td>
+      <td><%= link_to 'Info', office %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

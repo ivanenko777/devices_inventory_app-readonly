@@ -1,0 +1,30 @@
+<% content_for :page_head do %>
+  <h1 class="h2">Room #<%= @room.id %></h1>
+<% end %>
+
+<%= render 'menu' %>
+
+<p>
+  <strong>Office:</strong>
+  <%= @room.office.name %>
+</p>
+
+<p>
+  <strong>Office name:</strong>
+  <%= @room.office.address %>
+</p>
+
+<p>
+  <strong>Office active:</strong>
+  <%= @room.office.is_active %>
+</p>
+
+<p>
+  <strong>Room name:</strong>
+  <%= @room.name %>
+</p>
+
+<p>
+  <strong>Room active:</strong>
+  <%= @room.is_active %>
+</p>

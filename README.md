@@ -1,24 +1,25 @@
-# README
+# DEVICES INVETORY APP
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Technologies and libraries
 
-Things you may want to cover:
+- Ruby 2.7.2
+- Rails 5.2.4
+  - gem [active_link_to](https://github.com/comfy/active_link_to)
+  - gem [bootstrap_form](https://github.com/bootstrap-ruby/bootstrap_form)
+- MySQL 5.7
+- Docker 20.10.0
+- Docker compose (Compose file format 3.7)
 
-* Ruby version
+## Try it out with [Docker](https://www.docker.com/)
 
-* System dependencies
+You need Docker installed.
 
-* Configuration
+    # Run app:
+    docker-compose up -d
+    docker-compose run app rails db:schema:load
+    docker-compose run app rails db:seed
 
-* Database creation
+Open in browser http://localhost:3000/
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    # Stop app:
+    docker-compose down --volumes

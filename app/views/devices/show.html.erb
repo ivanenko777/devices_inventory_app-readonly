@@ -1,0 +1,69 @@
+<% content_for :page_head do %>
+  <h1 class="h2">Device #<%= @device.id %></h1>
+<% end %>
+
+<%= render 'menu' %>
+
+<p>
+  <strong>Status:</strong>
+  <%= @device.status.to_s.humanize %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @device.device_model.device_type.name %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= "#{@device.device_model.device_manufacturer.name} #{@device.device_model.name}" %>
+</p>
+
+<p>
+  <strong>Serial no:</strong>
+  <%= @device.serial_no %>
+</p>
+
+<p>
+  <strong>Asset no:</strong>
+  <%= @device.asset_no %>
+</p>
+
+<p>
+  <strong>Address, room:</strong>
+  <%= @device.room.office.address %>
+</p>
+<p>
+
+  <strong>Room:</strong>
+  <%= @device.room.name %>
+</p>
+
+<p>
+  <strong>Office:</strong>
+  <%= @device.room.office.name %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @device.note %>
+</p>
+
+<hr>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @device.created_at %>
+</p>
+<p>
+  <strong>Created By:</strong>
+  <%= @device.created_by.full_name %>
+</p>
+<p>
+  <strong>Updated at:</strong>
+  <%= @device.updated_at %>
+</p>
+<p>
+  <strong>Updated at:</strong>
+  <%= @device.updated_by.full_name %>
+</p>

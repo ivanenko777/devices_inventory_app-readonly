@@ -1,0 +1,7 @@
+<% content_for :page_head do %>
+  <h1 class="h2">Edit Device model #<%= @device_model.id %></h1>
+<% end %>
+
+<%= render 'menu' %>
+
+<%= render 'form', device_model: @device_model %>

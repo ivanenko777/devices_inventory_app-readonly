@@ -1,0 +1,20 @@
+<% content_for :page_head do %>
+  <h1 class="h2">Office #<%= @office.id %></h1>
+<% end %>
+
+<%= render 'menu' %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @office.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @office.address %>
+</p>
+
+<p>
+  <strong>Is active:</strong>
+  <%= @office.is_active %>
+</p>
